@@ -4,38 +4,23 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2024/03/12/hello-world/"/>
-      <url>/2024/03/12/hello-world/</url>
+      <title>20240315</title>
+      <link href="/2024/03/15/20240315/"/>
+      <url>/2024/03/15/20240315/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>typora-vue-theme主题介绍</title>
-      <link href="/2018/09/07/shu-ju-jie-gou-yu-suan-fa/"/>
-      <url>/2018/09/07/shu-ju-jie-gou-yu-suan-fa/</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote><p>开学将近两周了，今天起，每日记录自己的收获，学习笔记心得啥的，多动脑多记录多实践，现在是2024/3/15 23:51，开始记录，也是对自己的检讨和复盘，即使调整学习状态吧</p></blockquote><p><strong>今日收获</strong></p><ol><li>leetcode刷了7道题</li><li>八股计网看完了，操作系统看了一半</li></ol><p><code>今天没学太多，上午起来后就去上课了，晚上开始就一直焦虑摆烂刷帖子，有效学习就在下午，满打满算也就学了3个小时。</code><br><code>又开始焦虑了，总是认为只能兼顾一头，实际上时间是很够的，多学习多思考，我的学习能力不差的，焦虑的时候不看帖子群聊啥的了，专注提升自己的技术吧，多多实践</code></p><p><code>加油</code></p>]]></content>
       
       
       <categories>
           
-          <category> Markdown </category>
+          <category> 复盘 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Typora </tag>
-            
-            <tag> Markdown </tag>
+            <tag> 心灵对话 </tag>
             
         </tags>
       
