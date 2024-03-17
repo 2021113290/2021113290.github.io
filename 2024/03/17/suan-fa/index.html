@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="20240315, xy的每一天">
-    <meta name="description" content="每日">
+    <meta name="keywords" content="算法, xy的每一天">
+    <meta name="description" content="学习算法总结">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>20240315 | xy的每一天</title>
+    <title>算法 | xy的每一天</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">20240315</h1>
+                    <h1 class="description center-align post-title">算法</h1>
                 </div>
             </div>
         </div>
@@ -319,8 +319,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BF%83%E7%81%B5%E5%AF%B9%E8%AF%9D/">
-                                <span class="chip bg-color">心灵对话</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/BFS/">
+                                <span class="chip bg-color">BFS</span>
                             </a>
                         
                     </div>
@@ -331,8 +335,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%8D%E7%9B%98/" class="post-category">
-                                复盘
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -344,7 +348,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-15
+                    2024-03-17
                 </div>
                 
 
@@ -353,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    212
+                    845
                 </div>
                 
 
@@ -373,16 +377,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>开学将近两周了，今天起，每日记录自己的收获，学习笔记心得啥的，多动脑多记录多实践，现在是2024/3/15 23:51，开始记录，也是对自己的检讨和复盘，即使调整学习状态吧</p>
+                <h1 id="BFS-宽度优先搜索"><a href="#BFS-宽度优先搜索" class="headerlink" title="BFS 宽度优先搜索"></a>BFS 宽度优先搜索</h1><h4 id="1-基本思想：利用队列，每次取出队头元素，将拓展出的所有元素放到队尾"><a href="#1-基本思想：利用队列，每次取出队头元素，将拓展出的所有元素放到队尾" class="headerlink" title="1. 基本思想：利用队列，每次取出队头元素，将拓展出的所有元素放到队尾"></a>1. 基本思想：利用队列，每次取出队头元素，将拓展出的所有元素放到队尾</h4><blockquote>
+<p>理解拓展：目前做的2道题-迷宫有关，拓展的是队头的上下左右（2维迷宫）/向北、向南、向东、向西、向上、向下（3维迷宫）</p>
 </blockquote>
-<p><strong>今日收获</strong></p>
-<ol>
-<li>leetcode刷了7道题</li>
-<li>八股计网看完了，操作系统看了一半</li>
-</ol>
-<p><code>今天没学太多，上午起来后就去上课了，晚上开始就一直焦虑摆烂刷帖子，有效学习就在下午，满打满算也就学了3个小时。</code><br><code>又开始焦虑了，总是认为只能兼顾一头，实际上时间是很够的，多学习多思考，我的学习能力不差的，焦虑的时候不看帖子群聊啥的了，专注提升自己的技术吧，多多实践</code></p>
-<p><code>加油</code></p>
+<blockquote>
+<p>BFS最先输出的肯定是最短路径，因为是按宽度搜索的；求最短路径的题可以想想宽搜</p>
+</blockquote>
+<h4 id="2-模板如下："><a href="#2-模板如下：" class="headerlink" title="2. 模板如下："></a>2. 模板如下：</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 判重数组st[]  //入队时判重</span><br><span class="line">2. queue</span><br><span class="line">    queue&lt;-初始状态</span><br><span class="line">    while(queue非空)</span><br><span class="line">    {</span><br><span class="line">        t&lt;-队头 //队头出队</span><br><span class="line">        for(拓展t)</span><br><span class="line">        {</span><br><span class="line">            v&lt;-新节点</span><br><span class="line">            if(!st[v])</span><br><span class="line">            {</span><br><span class="line">                v-&gt;队尾</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="3-具体习题"><a href="#3-具体习题" class="headerlink" title="3. 具体习题"></a>3. 具体习题</h4><h5 id="3-1-献给阿尔吉侬的花束-二维"><a href="#3-1-献给阿尔吉侬的花束-二维" class="headerlink" title="3.1 献给阿尔吉侬的花束(二维)"></a>3.1 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1103/">献给阿尔吉侬的花束(二维)</a></h5><p>具体代码实现如下：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">210</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> a[N][N];</span><br><span class="line"><span class="type">int</span> dis[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(PII start)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    queue&lt;PII&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(start);<span class="comment">//队头队，对应步骤1</span></span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">    {</span><br><span class="line">        PII u = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> dx[<span class="number">4</span>] = {<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>};</span><br><span class="line">        <span class="type">int</span> dy[<span class="number">4</span>] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> ,<span class="number">-1</span>};</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)<span class="comment">//遍历四个方向，对应步骤2</span></span><br><span class="line">        {</span><br><span class="line">            <span class="type">int</span> x = u.first + dx[i];</span><br><span class="line">            <span class="type">int</span> y = u.second + dy[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(a[x][y] == <span class="string">'#'</span>) <span class="keyword">continue</span>;<span class="comment">//如果是'#',不做任何处理</span></span><br><span class="line">            <span class="keyword">if</span>(a[x][y] == <span class="string">'.'</span>)<span class="comment">//如果是 '.'，更新对应内容</span></span><br><span class="line">            {</span><br><span class="line">                dis[x][y] = dis[u.first][u.second] + <span class="number">1</span>;</span><br><span class="line">                a[x][y] = <span class="string">'#'</span>;</span><br><span class="line">                q.<span class="built_in">push</span>({x, y});</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(a[x][y] == <span class="string">'E'</span>)<span class="comment">//如果是'E'，找到了，输出</span></span><br><span class="line">            {</span><br><span class="line">                cout &lt;&lt; dis[u.first][u.second] + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    cout &lt;&lt; <span class="string">"oop!"</span> &lt;&lt; endl;<span class="comment">//没有找到</span></span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="string">'#'</span>, <span class="built_in">sizeof</span>(a));<span class="comment">//初始化地图，各个点都是墙。</span></span><br><span class="line">        <span class="built_in">memset</span>(dis, <span class="number">0</span>, <span class="built_in">sizeof</span>(dis));<span class="comment">//初始化dis</span></span><br><span class="line">        <span class="type">int</span> n,m;</span><br><span class="line">        PII start;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="comment">//从第一行存储地图，因为四周都是墙，bfs时，可以不做越界判断</span></span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)<span class="comment">//从第一；列存储地图，因为四周都是墙，bfs时，可以不做越界判断</span></span><br><span class="line">            {</span><br><span class="line">                cin &gt;&gt; a[i][j];</span><br><span class="line">                <span class="keyword">if</span>(a[i][j] == <span class="string">'S'</span>)<span class="comment">//记录下起点位置。</span></span><br><span class="line">                    start.first = i, start.second = j, a[i][j] = <span class="string">'#'</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">bfs</span>(start);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="3-2-地牢大师-三维"><a href="#3-2-地牢大师-三维" class="headerlink" title="3.2 地牢大师(三维)"></a>3.2 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1098/">地牢大师(三维)</a></h5><p>仿照刚才二维的题，给出具体代码：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">110</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> x,y,z;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> m[N][N][N];<span class="comment">//地图</span></span><br><span class="line"><span class="type">int</span> dis[N][N][N];</span><br><span class="line"><span class="type">int</span> l,r,c;</span><br><span class="line"><span class="type">int</span> dx[<span class="number">6</span>] = {<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>}, dy[<span class="number">6</span>] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>}, dz[<span class="number">6</span>] = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bfs</span><span class="params">(Point start)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    queue&lt;Point&gt; q;</span><br><span class="line">    </span><br><span class="line">    q.<span class="built_in">push</span>(start);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">    {</span><br><span class="line">        Point t=q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">        {</span><br><span class="line">            <span class="type">int</span> x=t.x+dx[i],y=t.y+dy[i],z=t.z+dz[i];</span><br><span class="line">            <span class="keyword">if</span>(m[x][y][z]==<span class="string">'#'</span>)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(m[x][y][z]==<span class="string">'.'</span>)</span><br><span class="line">            {</span><br><span class="line">                dis[x][y][z]=dis[t.x][t.y][t.z]+<span class="number">1</span>;</span><br><span class="line">                m[x][y][z]=<span class="string">'#'</span>;</span><br><span class="line">                q.<span class="built_in">push</span>({x,y,z});</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(m[x][y][z]==<span class="string">'E'</span>)</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">return</span> dis[t.x][t.y][t.z]+<span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;l,&amp;r,&amp;c),l||r||c)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">memset</span>(m,<span class="string">'#'</span>,<span class="built_in">sizeof</span>(m));</span><br><span class="line">        <span class="built_in">memset</span>(dis,<span class="number">0</span>,<span class="built_in">sizeof</span>(dis));</span><br><span class="line">        Point start,end;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=l;i++)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=r;j++)</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=c;k++)</span><br><span class="line">                {</span><br><span class="line">                    cin&gt;&gt;m[i][j][k];</span><br><span class="line">                    <span class="keyword">if</span>(m[i][j][k]==<span class="string">'S'</span>)start={i,j,k};</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> distance=<span class="built_in">bfs</span>(start);</span><br><span class="line">        <span class="keyword">if</span>(distance==<span class="number">-1</span>)<span class="built_in">puts</span>(<span class="string">"Trapped!"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Escaped in %d minute(s).\n"</span>,distance);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>其实可以看出很强的规律性，这两道题的做法几乎可以一模一样；等我再做几道题找找规律</strong></p>
 
                 
             </div>
@@ -399,7 +406,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">xinyu</a>
+                    <a href="/about" rel="external nofollow noreferrer">XinYu</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -409,7 +416,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://2021113290.github.io/2024/03/15/20240315/">https://2021113290.github.io/2024/03/15/20240315/</a>
+                    <a href="https://2021113290.github.io/2024/03/17/suan-fa/">https://2021113290.github.io/2024/03/17/suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -422,7 +429,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">xinyu</a>
+                    <a href="/about" target="_blank">XinYu</a>
                     !
                 </span>
             </div>
@@ -447,8 +454,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BF%83%E7%81%B5%E5%AF%B9%E8%AF%9D/">
-                                    <span class="chip bg-color">心灵对话</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/BFS/">
+                                    <span class="chip bg-color">BFS</span>
                                 </a>
                             
                         </div>
@@ -494,9 +505,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/03/17/suan-fa/">
                     <div class="card-image">
@@ -514,9 +526,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -529,6 +541,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -548,7 +561,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2024/03/15/20240315/">
@@ -582,7 +595,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
