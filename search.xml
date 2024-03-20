@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Redis</title>
+      <link href="/2024/03/21/redis/"/>
+      <url>/2024/03/21/redis/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>第一次更新：2024/3/21</p></blockquote><h2 id="何为Redis？"><a href="#何为Redis？" class="headerlink" title="何为Redis？"></a>何为<code>Redis</code>？</h2><p>可以理解为在内存中存储数据，适用于分布式系统；而对于单机架构，直接用变量存储则是更优的选择；</p><p><code>Redis</code>基于网络，可以把自己内存中的变量给别的主机进程使用；</p><p>与<code>MySQL</code>相比，<code>Redis</code>快，但存储空间有限；</p><p>一般使用<code>Redis</code>+<code>MySQL</code>，可以满足“二八原则”；但是这样系统的复杂度也会增加，同时，也涉及<code>Redis</code>和<code>MySQL</code>的同步问题</p><hr><h2 id="何为分布式系统？"><a href="#何为分布式系统？" class="headerlink" title="何为分布式系统？"></a>何为分布式系统？</h2><p>首先先说一下<strong>单机架构</strong>：只有一台服务器，负责所有工作（应用服务+数据库服务）。<br>而一台主机的硬件资源有限，服务器处理请求需要消耗资源，此时，想要处理大量请求，<strong>要么</strong>加硬件，<strong>要么</strong>性能测试，对症下药。<br>一台主机最终会被拓展到极限–&gt;此时，引入多台主机，即<strong>分布式系统</strong>。</p><p><strong>分布式系统中提高性能、可靠性、稳定性有哪些具体方案呢?</strong></p><ul><li><strong>应用服务器和数据库服务器分离</strong>：对于前者重点配置<code>CPU</code>和内存资源，对于后者重点配置硬盘资源。</li><li><strong>引入更多应用服务器节点，通过负载均衡器分配请求</strong>。</li><li><strong>数据库读写分离</strong>：主数据库负责写，从数据库负责读，一般是“一主多从”。</li><li><strong>缓存</strong>：将数据分为冷、热数据。缓存中放热数据，只占全量数据的一小部分（二八原则）。</li><li>数据量过大，一台服务器存不下时：使用多台主机对数据库进行拆分，“<strong>分库分表</strong>”</li><li><strong>微服务</strong>：一个复杂的服务器拆分为更多功能单一更小的服务器。<ul><li><strong>优点</strong>：1. 功能复用 2. 不同功能不同部署</li><li><strong>缺点</strong>：1. 性能下降，因为微服务间通过网络通信。缓解办法：加硬件资源 2. 系统复杂性增加。缓解办法：监控报警+维护人员。</li></ul></li></ul><hr><h2 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><code>Redis</code>特性</h2><blockquote><p>整理自官网，并加入自己的理解</p></blockquote><ol><li><strong>在内存中存储数据</strong>：以<code>&lt;key,value&gt;</code>方式存储组织数据</li><li><strong>可编程性</strong>：简单交互式命令/脚本</li><li><strong>可拓展性</strong>：可用<code>C、C++、Rust</code>编写<code>Redis</code>扩展，使其支持更多地数据结构</li><li><strong>持久化</strong>：内存数据掉电会丢失，<code>Redis</code>会把数据备份到硬盘</li><li><strong>集群化</strong>： 即水平扩展，支持多个<code>Redis</code>节点，每个Redis存储一部分数据。是不是很像分库分表？</li><li><strong>高可用</strong>：冗余 “主从”</li><li><strong>快</strong> ，原因如下：</li></ol><ul><li>数据在内存中</li><li>核心功能为操作简单数据结构</li><li>使用<code>I/O</code>多路复用</li><li>使用单线程模型，减少不必要的线程之间的竞争开销<br><strong>那么问题来了，为什么用单线程模型还能快呢？</strong><br><strong>原因</strong>：多线程提高效率的前提时<code>CPU</code>密集型任务，而<code>Redis</code>不会吃很多<code>CPU</code>，因为第<code>2</code>条原因</li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法刷题-数组基础day1</title>
       <link href="/2024/03/20/suan-fa-shua-ti-shu-zu-ji-chu-day1/"/>
       <url>/2024/03/20/suan-fa-shua-ti-shu-zu-ji-chu-day1/</url>
