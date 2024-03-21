@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="xy的每一天">
-    <meta name="description" content="
-title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: truehide: falsecover: truetoc: truemathjax: falsesummary">
+    <meta name="keywords" content="算法刷题-数组基础day2, xy的每一天">
+    <meta name="description" content="坚持刷题写博客总结60day计划">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>xy的每一天</title>
+    <title>算法刷题-数组基础day2 | xy的每一天</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -291,12 +290,12 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">算法刷题-数组基础day2</h1>
                 </div>
             </div>
         </div>
@@ -318,12 +317,29 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">数组基础</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="post-category">
+                                算法刷题
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -366,8 +382,7 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<h2 id="title-算法刷题-数组基础day2date-2024-03-21-13-09-09author-XinYutop-truehide-falsecover-truetoc-truemathjax-falsesummary-坚持刷题写博客总结60day计划categories-算法刷题tags-算法-数组基础"><a href="#title-算法刷题-数组基础day2date-2024-03-21-13-09-09author-XinYutop-truehide-falsecover-truetoc-truemathjax-falsesummary-坚持刷题写博客总结60day计划categories-算法刷题tags-算法-数组基础" class="headerlink" title="title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: truehide: falsecover: truetoc: truemathjax: falsesummary: 坚持刷题写博客总结60day计划categories: 算法刷题tags:  - 算法  - 数组基础"></a>title: 算法刷题-数组基础day2<br>date: 2024-03-21 13:09:09<br>author: XinYu<br>top: true<br>hide: false<br>cover: true<br>toc: true<br>mathjax: false<br>summary: 坚持刷题写博客总结60day计划<br>categories: 算法刷题<br>tags:<br>  - 算法<br>  - 数组基础</h2><h1 id="Problem-977-有序数组的平方"><a href="#Problem-977-有序数组的平方" class="headerlink" title="Problem: 977. 有序数组的平方"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/description/">977. 有序数组的平方</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+                <h1 id="Problem-977-有序数组的平方"><a href="#Problem-977-有序数组的平方" class="headerlink" title="Problem: 977. 有序数组的平方"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/description/">977. 有序数组的平方</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
 <li><p><strong>暴力做法</strong>：<br>如果我们直接对每个数字进行平方计算，然后将结果放入一个新数组并排序，虽然这样做可以解决问题，但效率不高。因为排序操作的时间复杂度通常是 O(n log n)。</p>
 </li>
 <li><p><strong>双指针策略</strong>：<br>我们可以考虑是否有更优的方法。观察到，负数平方后变正且绝对值较小的负数平方后得到的值较小，而正数平方后值增大。<br>基于这一点，我们可以使用双指针，一个指向数组的起始位置（处理可能的负数），另一个指向数组的末尾（处理正数）。比较这两个指针所指向的数字的平方，将较大的平方值放入结果数组的末尾。由于我们是<strong>从后往前</strong>填充结果数组，因此较大的平方值应该先被放置。</p>
@@ -508,7 +523,15 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">数组基础</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -552,48 +575,9 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2024/03/21/suan-fa-shua-ti-shu-zu-ji-chu-day2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            XinYu
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2024/03/21/redis/">
                     <div class="card-image">
@@ -611,9 +595,9 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -635,6 +619,59 @@ title: 算法刷题-数组基础day2date: 2024-03-21 13:09:09author: XinYutop: t
                     
                     <a href="/tags/Redis/">
                         <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/20/suan-fa-shua-ti-shu-zu-ji-chu-day1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.png" class="responsive-img" alt="算法刷题-数组基础day1">
+                        
+                        <span class="card-title">算法刷题-数组基础day1</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            坚持刷题写博客总结60day计划
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="post-category">
+                                    算法刷题
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">数组基础</span>
                     </a>
                     
                 </div>
