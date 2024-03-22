@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Redis, xy的每一天">
-    <meta name="description" content="Redis知识笔记">
+    <meta name="keywords" content="算法刷题-链表day3, xy的每一天">
+    <meta name="description" content="坚持刷题写博客总结60day计划">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Redis | xy的每一天</title>
+    <title>算法刷题-链表day3 | xy的每一天</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -295,7 +295,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Redis</h1>
+                    <h1 class="description center-align post-title">算法刷题-链表day3</h1>
                 </div>
             </div>
         </div>
@@ -319,12 +319,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                <span class="chip bg-color">后端</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/Redis/">
-                                <span class="chip bg-color">Redis</span>
+                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                <span class="chip bg-color">链表</span>
                             </a>
                         
                     </div>
@@ -335,8 +335,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Redis/" class="post-category">
-                                Redis
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="post-category">
+                                算法刷题
                             </a>
                         
                     </div>
@@ -348,7 +348,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-21
+                    2024-03-22
                 </div>
                 
 
@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    760
+                    1.4k
                 </div>
                 
 
@@ -382,48 +382,81 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>第一次更新：2024/3/21</p>
-</blockquote>
-<h2 id="何为Redis？"><a href="#何为Redis？" class="headerlink" title="何为Redis？"></a>何为<code>Redis</code>？</h2><p>可以理解为在内存中存储数据，适用于分布式系统；而对于单机架构，直接用变量存储则是更优的选择；</p>
-<p><code>Redis</code>基于网络，可以把自己内存中的变量给别的主机进程使用；</p>
-<p>与<code>MySQL</code>相比，<code>Redis</code>快，但存储空间有限；</p>
-<p>一般使用<code>Redis</code>+<code>MySQL</code>，可以满足“二八原则”；但是这样系统的复杂度也会增加，同时，也涉及<code>Redis</code>和<code>MySQL</code>的同步问题</p>
-<hr>
-<h2 id="何为分布式系统？"><a href="#何为分布式系统？" class="headerlink" title="何为分布式系统？"></a>何为分布式系统？</h2><p>首先先说一下<strong>单机架构</strong>：只有一台服务器，负责所有工作（应用服务+数据库服务）。<br>而一台主机的硬件资源有限，服务器处理请求需要消耗资源，此时，想要处理大量请求，<strong>要么</strong>加硬件，<strong>要么</strong>性能测试，对症下药。<br>一台主机最终会被拓展到极限–&gt;此时，引入多台主机，即<strong>分布式系统</strong>。</p>
-<p><strong>分布式系统中提高性能、可靠性、稳定性有哪些具体方案呢?</strong></p>
+                <h2 id="Problem-203-移除链表元素"><a href="#Problem-203-移除链表元素" class="headerlink" title="Problem: 203. 移除链表元素"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/description/">203. 移除链表元素</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><p><strong>边界情况处理</strong>：首先，如果传入的链表头节点<code>head</code>是<code>null</code>，说明链表为空，直接返回<code>null</code>。</p>
+</li>
+<li><p><strong>创建哑节点（Dummy Node）</strong>：在链表的头部创建一个新的节点<code>dummy</code>，其值为-1（这个值其实不重要，重要的是它是一个非<code>val</code>值），并且它的<code>next</code>指针指向原链表的头节点<code>head</code>。哑节点的引入可以简化删除头节点的情况，因为即使头节点需要被删除，我们也不需要特殊处理。我们只需要更新<code>dummy.next</code>即可。</p>
+</li>
+<li><p><strong>初始化指针</strong>：设置两个指针<code>pre</code>（前驱节点）和<code>now</code>（当前节点）。<code>pre</code>初始化为哑节点<code>dummy</code>，<code>now</code>初始化为原链表的头节点<code>head</code>。</p>
+</li>
+<li><p><strong>遍历链表</strong>：使用<code>while</code>循环遍历链表，直到<code>now</code>节点为<code>null</code>，即到达链表尾部。</p>
 <ul>
-<li><strong>应用服务器和数据库服务器分离</strong>：对于前者重点配置<code>CPU</code>和内存资源，对于后者重点配置硬盘资源。</li>
-<li><strong>引入更多应用服务器节点，通过负载均衡器分配请求</strong>。</li>
-<li><strong>数据库读写分离</strong>：主数据库负责写，从数据库负责读，一般是“一主多从”。</li>
-<li><strong>缓存</strong>：将数据分为冷、热数据。缓存中放热数据，只占全量数据的一小部分（二八原则）。</li>
-<li>数据量过大，一台服务器存不下时：使用多台主机对数据库进行拆分，“<strong>分库分表</strong>”</li>
-<li><strong>微服务</strong>：一个复杂的服务器拆分为更多功能单一更小的服务器。<ul>
-<li><strong>优点</strong>：1. 功能复用 2. 不同功能不同部署</li>
-<li><strong>缺点</strong>：1. 性能下降，因为微服务间通过网络通信。缓解办法：加硬件资源 2. 系统复杂性增加。缓解办法：监控报警+维护人员。</li>
+<li><strong>检查当前节点值</strong>：如果<code>now</code>节点的值等于<code>val</code>，说明需要删除该节点。此时，我们更新<code>pre.next</code>为<code>now.next</code>，即跳过<code>now</code>节点，实现删除。</li>
+<li><strong>否则</strong>：如果<code>now</code>节点的值不等于<code>val</code>，则不需要删除，我们只需要将<code>pre</code>移动到<code>now</code>，以便在下一次循环中检查<code>now</code>的下一个节点。</li>
 </ul>
 </li>
-</ul>
-<hr>
-<h2 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><code>Redis</code>特性</h2><blockquote>
-<p>整理自官网，并加入自己的理解</p>
-</blockquote>
-<ol>
-<li><strong>在内存中存储数据</strong>：以<code>&lt;key,value&gt;</code>方式存储组织数据</li>
-<li><strong>可编程性</strong>：简单交互式命令/脚本</li>
-<li><strong>可拓展性</strong>：可用<code>C、C++、Rust</code>编写<code>Redis</code>扩展，使其支持更多地数据结构</li>
-<li><strong>持久化</strong>：内存数据掉电会丢失，<code>Redis</code>会把数据备份到硬盘</li>
-<li><strong>集群化</strong>： 即水平扩展，支持多个<code>Redis</code>节点，每个Redis存储一部分数据。是不是很像分库分表？</li>
-<li><strong>高可用</strong>：冗余 “主从”</li>
-<li><strong>快</strong> ，原因如下：</li>
+<li><p><strong>返回新链表头节点</strong>：当循环结束后，所有值为<code>val</code>的节点都已被删除。此时，返回<code>dummy.next</code>作为新链表的头节点。</p>
+</li>
 </ol>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)<br>空间复杂度:<br>O(1)</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() {}</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> {</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">null</span>)<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        ListNode dummy=<span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>,head);</span><br><span class="line">        ListNode pre=dummy;</span><br><span class="line">        ListNode now=head;</span><br><span class="line">        <span class="keyword">while</span>(now!=<span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">if</span>(now.val==val){</span><br><span class="line">                pre.next=now.next;</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                pre=now;</span><br><span class="line">            }</span><br><span class="line">            now=now.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-707-设计链表"><a href="#Problem-707-设计链表" class="headerlink" title="Problem: 707. 设计链表"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-linked-list/description/">707. 设计链表</a></h2><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
+<li><p><strong>边界检查</strong>：</p>
 <ul>
-<li>数据在内存中</li>
-<li>核心功能为操作简单数据结构</li>
-<li>使用<code>I/O</code>多路复用</li>
-<li>使用单线程模型，减少不必要的线程之间的竞争开销<br><strong>那么问题来了，为什么用单线程模型还能快呢？</strong><br><strong>原因</strong>：多线程提高效率的前提时<code>CPU</code>密集型任务，而<code>Redis</code>不会吃很多<code>CPU</code>，因为第<code>2</code>条原因</li>
+<li>在<code>get</code>方法中，需要确保传入的<code>index</code>在有效范围内（即<code>0</code>到<code>size - 1</code>之间）。如果<code>index</code>小于<code>0</code>或大于等于<code>size</code>，应该返回错误值<code>-1</code>。</li>
+<li>在<code>addAtIndex</code>方法中，如果<code>index</code>大于链表当前的<code>size</code>，应直接返回，不执行添加操作。如果<code>index</code>小于<code>0</code>，将其修正为<code>0</code>，表示在链表头部添加元素。</li>
+<li>在<code>deleteAtIndex</code>方法中，也需要进行类似的边界检查，确保<code>index</code>在有效范围内。</li>
 </ul>
-<hr>
+</li>
+<li><p>**<code>addAtIndex</code>**：</p>
+<ul>
+<li>在<code>addAtIndex</code>方法中，添加新节点时，首先创建一个新节点<code>toAdd</code>，然后设置<code>toAdd.next</code>为<code>pre.next</code>，最后设置<code>pre.next</code>为<code>toAdd</code>。这个顺序很重要，因为如果先设置<code>pre.next</code>为<code>toAdd</code>，那么就会丢失对原<code>pre.next</code>节点的引用，导致链表断裂。</li>
+<li>在<code>addAtIndex</code>方法中，添加节点后需要增加链表的长度<code>size</code>。</li>
+</ul>
+</li>
+<li><p>**<code>deleteAtIndex</code>**：</p>
+<ul>
+<li>在<code>deleteAtIndex</code>方法中，删除节点时，只需要将<code>pre.next</code>设置为<code>pre.next.next</code>即可，这样就跳过了要删除的节点。</li>
+<li>注意，如果<code>index</code>是链表的最后一个元素的索引，那么<code>pre.next</code>将会是<code>null</code>，此时不需要做任何操作,仍然保持为<code>null</code>。</li>
+<li>在<code>deleteAtIndex</code>方法中，删除节点后需要减少链表的长度<code>size</code>。</li>
+</ul>
+</li>
+<li><p><strong>虚拟头节点</strong>：</p>
+<ul>
+<li>使用虚拟头节点<code>head</code>简化对链表头部的操作，因为无需单独处理链表为空的情况。</li>
+</ul>
+</li>
+</ol>
+<h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>涉及 index 的相关操作为 O(index), 其余为 O(1)</p>
+<p>空间复杂度:<br>O(n)</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>{</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    ListNode(<span class="type">int</span> val){</span><br><span class="line">        <span class="built_in">this</span>.val=val;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> {</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    ListNode head;<span class="comment">//虚拟头节点</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyLinkedList</span><span class="params">()</span> {</span><br><span class="line">        size=<span class="number">0</span>;</span><br><span class="line">        head=<span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> index)</span> {</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>||index&gt;=size)<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        ListNode cur=head.next;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;index;i++){</span><br><span class="line">            cur=cur.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> cur.val;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> {</span><br><span class="line">        addAtIndex(<span class="number">0</span>,val);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> {</span><br><span class="line">        addAtIndex(size,val);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> {</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>)index=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;size)<span class="keyword">return</span>;</span><br><span class="line">        size++;</span><br><span class="line">        ListNode pre=head;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;index;i++){</span><br><span class="line">            pre=pre.next;</span><br><span class="line">        }</span><br><span class="line">        ListNode toAdd=<span class="keyword">new</span> <span class="title class_">ListNode</span>(val);</span><br><span class="line">        toAdd.next=pre.next;</span><br><span class="line">        pre.next=toAdd;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> {</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>||index&gt;=size)<span class="keyword">return</span>;</span><br><span class="line">        size--;</span><br><span class="line">        ListNode pre=head;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;index;i++){</span><br><span class="line">            pre=pre.next;</span><br><span class="line">        }</span><br><span class="line">        pre.next=pre.next.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyLinkedList object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyLinkedList obj = new MyLinkedList();</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.get(index);</span></span><br><span class="line"><span class="comment"> * obj.addAtHead(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtTail(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtIndex(index,val);</span></span><br><span class="line"><span class="comment"> * obj.deleteAtIndex(index);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-206-反转链表"><a href="#Problem-206-反转链表" class="headerlink" title="Problem: 206. 反转链表"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/description/">206. 反转链表</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><p><strong>初始化指针</strong>：</p>
+<ul>
+<li><code>pre</code> 初始化为 <code>null</code>，因为在反转链表的过程中，第一个节点的 <code>next</code> 应该指向 <code>null</code>。</li>
+<li><code>cur</code> 初始化为链表的头节点 <code>head</code>，这是我们开始反转的起点。</li>
+<li><code>tmp</code> 用于暂存 <code>cur</code> 的下一个节点，以便在更改 <code>cur.next</code> 之前可以保留对下一个节点的引用。</li>
+</ul>
+</li>
+<li><p><strong>遍历链表并反转节点</strong>：</p>
+<ul>
+<li>使用一个 <code>while</code> 循环，直到 <code>cur</code> 为 <code>null</code>，即遍历完整个链表。</li>
+<li>在循环内部，首先保存 <code>cur</code> 的下一个节点到 <code>tmp</code>，因为接下来会改变 <code>cur.next</code> 的指向。</li>
+<li>然后，将 <code>cur.next</code> 指向 <code>pre</code>，即反转当前节点的指向。</li>
+<li>接着，更新 <code>pre</code> 和 <code>cur</code> 的位置，<code>pre</code> 移动到当前节点 <code>cur</code>，<code>cur</code> 移动到下一个节点 <code>tmp</code>。</li>
+</ul>
+</li>
+<li><p><strong>返回新的头节点</strong>：</p>
+<ul>
+<li>当 <code>cur</code> 为 <code>null</code> 时，说明链表已经遍历完毕，所有节点都已经反转。</li>
+<li>此时，<code>pre</code> 指向的是原链表的最后一个节点，它现在是反转后链表的头节点。</li>
+<li>因此，返回 <code>pre</code> 作为反转后的链表的头节点。</li>
+</ul>
+</li>
+</ol>
+<h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br> O(n)</p>
+<p>空间复杂度:<br>O(1)</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() {}</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> {</span><br><span class="line">        ListNode pre=<span class="literal">null</span>;</span><br><span class="line">        ListNode cur=head;</span><br><span class="line">        ListNode tmp=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur!=<span class="literal">null</span>){</span><br><span class="line">            tmp=cur.next;</span><br><span class="line">        cur.next=pre;</span><br><span class="line">        pre=cur;</span><br><span class="line">        cur=tmp;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -450,7 +483,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://2021113290.github.io/2024/03/21/redis/">https://2021113290.github.io/2024/03/21/redis/</a>
+                    <a href="https://2021113290.github.io/2024/03/22/suan-fa-shua-ti-lian-biao-day3/">https://2021113290.github.io/2024/03/22/suan-fa-shua-ti-lian-biao-day3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,12 +521,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                    <span class="chip bg-color">后端</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/Redis/">
-                                    <span class="chip bg-color">Redis</span>
+                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                    <span class="chip bg-color">链表</span>
                                 </a>
                             
                         </div>
@@ -539,9 +572,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/03/22/suan-fa-shua-ti-lian-biao-day3/">
                     <div class="card-image">
@@ -559,9 +593,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -574,6 +608,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -596,19 +631,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/21/suan-fa-shua-ti-shu-zu-ji-chu-day2/">
+                <a href="/2024/03/21/redis/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.png" class="responsive-img" alt="算法刷题-数组基础day2">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Redis">
                         
-                        <span class="card-title">算法刷题-数组基础day2</span>
+                        <span class="card-title">Redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            坚持刷题写博客总结60day计划
+                            Redis知识笔记
                         
                     </div>
                     <div class="publish-info">
@@ -619,8 +654,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="post-category">
-                                    算法刷题
+                            <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
@@ -630,12 +665,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">数组基础</span>
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
