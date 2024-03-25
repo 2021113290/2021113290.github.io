@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法刷题-链表day4, xy的每一天">
+    <meta name="keywords" content="算法刷题-哈希表day5, xy的每一天">
     <meta name="description" content="坚持刷题写博客总结60day计划">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法刷题-链表day4 | xy的每一天</title>
+    <title>算法刷题-哈希表day5 | xy的每一天</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法刷题-链表day4</h1>
+                    <h1 class="description center-align post-title">算法刷题-哈希表day5</h1>
                 </div>
             </div>
         </div>
@@ -323,8 +323,8 @@
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                <span class="chip bg-color">链表</span>
+                            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                <span class="chip bg-color">哈希表</span>
                             </a>
                         
                     </div>
@@ -348,7 +348,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-23
+                    2024-03-25
                 </div>
                 
 
@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.2k
                 </div>
                 
 
@@ -382,139 +382,206 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Problem-24-两两交换链表中的节点"><a href="#Problem-24-两两交换链表中的节点" class="headerlink" title="Problem: 24. 两两交换链表中的节点"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/description/">24. 两两交换链表中的节点</a></h2><h3 id="虚拟头结点的使用"><a href="#虚拟头结点的使用" class="headerlink" title="虚拟头结点的使用"></a>虚拟头结点的使用</h3><p>在链表头部进行插入、删除或其他操作时，或者当需要简化链表处理的边界条件检查时，使用虚拟头节点</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
-<li><p><strong>创建虚拟头节点（dummy）</strong>:</p>
-<ul>
-<li>为了简化头节点的处理，我们创建一个虚拟头节点（dummy），并将其next指针指向原链表的头节点（head）。这样做的好处是，即使在交换头节点和第二个节点时，我们也能保证链表的连续性，因为虚拟头节点总是指向当前的“头节点”。</li>
-</ul>
-</li>
-<li><p><strong>初始化指针</strong>:</p>
-<ul>
-<li><code>cur</code> 指针用于遍历链表。它初始时指向虚拟头节点。</li>
-<li><code>first</code> 和 <code>second</code> 指针用于指向每一对要交换的相邻节点。</li>
-<li><code>tmp</code> 指针用于暂存<code>second</code>节点的下一个节点，以便在交换后能够继续遍历链表。</li>
-</ul>
-</li>
-<li><p><strong>遍历链表并交换节点</strong>:</p>
-<ul>
-<li>使用<code>while</code>循环遍历链表。循环的条件是<code>cur.next</code>和<code>cur.next.next</code>都不为null，确保我们总是有一对相邻的节点可以交换。</li>
-<li>在循环内部，我们首先更新<code>first</code>和<code>second</code>指针，分别指向当前要交换的一对节点。</li>
-<li>然后，我们使用<code>tmp</code>暂存<code>second</code>节点的下一个节点。</li>
-<li>接下来，我们进行节点的交换：<ul>
-<li>将<code>cur</code>的next指针指向<code>second</code>节点。</li>
-<li>将<code>second</code>节点的next指针指向<code>first</code>节点。</li>
-<li>将<code>first</code>节点的next指针指向<code>tmp</code>节点，即原<code>second</code>节点的下一个节点。</li>
-</ul>
-</li>
-<li>最后，我们更新<code>cur</code>指针，使其指向<code>first</code>节点，以便在下一次循环中处理下一对节点。</li>
-</ul>
-</li>
-<li><p><strong>返回结果</strong>:</p>
-<ul>
-<li>由于我们使用了虚拟头节点，所以最终返回的是<code>dummy.next</code>，即处理后的链表的头节点。</li>
-</ul>
-</li>
+                <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ol>
+<li>字符串长度<code>s.length()</code>,数组长度<code>s.length</code></li>
+<li><strong>数组==null和数组长度为0不是同一个意思</strong>。<br><code>数组 == null</code> 是检查数组变量是否指向一个数组对象，而 <code>数组长度为0</code> 是检查数组对象是否包含任何元素。两者都是检查数组的不同方面，因此它们的意义并不相同。</li>
+<li><code>Java set</code>基本操作</li>
 </ol>
-<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
-<p>空间复杂度:<br>O(1)</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode() {}</span><br><span class="line"> *     ListNode(int val) { this.val = val; }</span><br><span class="line"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span><br><span class="line"> * }</span><br><span class="line"> */</span><br><span class="line">class Solution {</span><br><span class="line">    public ListNode swapPairs(ListNode head) {</span><br><span class="line">        ListNode dummy=new ListNode(-1);</span><br><span class="line">        dummy.next=head;</span><br><span class="line">        ListNode cur=dummy;</span><br><span class="line">        ListNode first;</span><br><span class="line">        ListNode second;</span><br><span class="line">        ListNode tmp;</span><br><span class="line">        while(cur.next!=null&amp;&amp;cur.next.next!=null)</span><br><span class="line">        {</span><br><span class="line">            first=cur.next;</span><br><span class="line">            second=cur.next.next;</span><br><span class="line">            tmp=cur.next.next.next;</span><br><span class="line">            cur.next=second;</span><br><span class="line">            second.next=first;</span><br><span class="line">            first.next=tmp;</span><br><span class="line">            cur=first;</span><br><span class="line">        }</span><br><span class="line">        return dummy.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="Problem-19-删除链表的倒数第-N-个结点"><a href="#Problem-19-删除链表的倒数第-N-个结点" class="headerlink" title="Problem: 19. 删除链表的倒数第 N 个结点"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/">19. 删除链表的倒数第 N 个结点</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>使用快慢指针来删除链表中倒数第n个节点。具体思路如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add()</td>
+<td>添加元素</td>
+</tr>
+<tr>
+<td>contains()</td>
+<td>判断元素是否存在于集合当中</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>删除集合中的元素</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>删除集合中所有元素</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>计算集合中的元素数量</td>
+</tr>
+<tr>
+<td>for-each</td>
+<td>迭代 HashSet 中的元素</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><code>Java map</code>基本操作</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean containsKey(Object k)</td>
+<td>如果此映射包含指定键的映射关系，则返回 true。</td>
+</tr>
+<tr>
+<td>boolean containsValue(Object v)(Object v)</td>
+<td>如果此映射将一个或多个键映射到指定值，则返回 true。</td>
+</tr>
+<tr>
+<td>Set entrySet( )</td>
+<td>返回此映射中包含的映射关系的 Set 视图。</td>
+</tr>
+<tr>
+<td>boolean equals(Object obj)</td>
+<td>比较指定的对象与此映射是否相等。</td>
+</tr>
+<tr>
+<td>Object get(Object k)</td>
+<td>返回指定键所映射的值；如果此映射不包含该键的映射关系，则返回 null。</td>
+</tr>
+<tr>
+<td>int hashCode( )</td>
+<td>返回此映射的哈希码值。</td>
+</tr>
+<tr>
+<td>boolean isEmpty( )</td>
+<td>如果此映射未包含键-值映射关系，则返回 true。</td>
+</tr>
+<tr>
+<td>Set keySet( )</td>
+<td>返回此映射中包含的键的 Set 视图。</td>
+</tr>
+<tr>
+<td>Object put(Object k, Object v)</td>
+<td>将指定的值与此映射中的指定键关联</td>
+</tr>
+<tr>
+<td>Object remove(Object k)</td>
+<td>如果存在一个键的映射关系，则将其从此映射中移除</td>
+</tr>
+<tr>
+<td>int size( )</td>
+<td>返回此映射中的键-值映射关系数。</td>
+</tr>
+</tbody></table>
+<h2 id="Problem-242-有效的字母异位词"><a href="#Problem-242-有效的字母异位词" class="headerlink" title="Problem: 242. 有效的字母异位词"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/description/">242. 有效的字母异位词</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>变位词是指两个单词，它们包含相同数量和种类的字母，但顺序不同。题目中说只有小写字母</p>
 <ol>
-<li><p><strong>创建虚拟头节点</strong>：</p>
+<li><p><strong>初始化字符计数数组</strong>：</p>
 <ul>
-<li>为了处理删除头节点的情况，我们引入一个虚拟头节点（dummy），并将其next指针指向原链表的头节点（head）。这样，无论要删除的节点是头节点还是其他节点，我们都可以通过操作虚拟头节点的next指针来完成删除操作。</li>
+<li>创建一个长度为26的整数数组<code>chars</code>。这个数组用于记录每个<strong>小写字母</strong>在字符串<code>s</code>中出现的次数。数组的每个索引对应一个小写字母（’a’到’z’），而值则是该字母在<code>s</code>中出现的次数。</li>
 </ul>
 </li>
-<li><p><strong>初始化快慢指针</strong>：</p>
+<li><p><strong>统计字符串<code>s</code>中每个字符的出现次数</strong>：</p>
 <ul>
-<li>初始化两个指针，fast（快指针）和slow（慢指针），都指向虚拟头节点（dummy）。</li>
+<li>遍历字符串<code>s</code>的每个字符。</li>
+<li>对于每个字符，通过<code>s.charAt(i) - 'a'</code>计算其在<code>chars</code>数组中的索引（因为字符’a’的ASCII码值减去’a’的ASCII码值等于0，字符’b’的ASCII码值减去’a’的ASCII码值等于1，以此类推）。</li>
+<li>将对应索引的值加1，表示该字符在<code>s</code>中出现了一次。</li>
 </ul>
 </li>
-<li><p><strong>快指针先走n+1步</strong>：</p>
+<li><p><strong>从字符计数数组中减去字符串<code>t</code>中每个字符的出现次数</strong>：</p>
 <ul>
-<li>快指针fast先向前移动n+1步。这样做的目的是让快指针和慢指针之间保持一个n的距离。当快指针和慢指针同时移动时，慢指针会指向要删除的节点的前一个节点。</li>
+<li>遍历字符串<code>t</code>的每个字符。</li>
+<li>同样地，计算每个字符在<code>chars</code>数组中的索引。</li>
+<li>将对应索引的值减1，表示从<code>s</code>中的计数中减去该字符在<code>t</code>中的出现次数。</li>
 </ul>
 </li>
-<li><p><strong>快慢指针同时移动</strong>：</p>
+<li><p><strong>检查字符计数数组是否全为零</strong>：</p>
 <ul>
-<li>当快指针fast不为null时，快指针和慢指针同时向前移动。因为快指针比慢指针先走了n+1步，所以在这个过程中，快指针和慢指针之间始终保持n个节点的距离。</li>
-</ul>
-</li>
-<li><p><strong>删除节点</strong>：</p>
-<ul>
-<li>当快指针fast到达链表末尾（即fast.next为null）时，慢指针slow刚好指向要删除的节点的前一个节点。此时，我们只需要将slow的next指针指向要删除节点的下一个节点，即完成了删除操作。</li>
+<li>如果<code>s</code>和<code>t</code>是变位词，那么对于所有字符，<code>s</code>中的出现次数应该等于<code>t</code>中的出现次数。因此，在减去<code>t</code>中的字符出现次数后，<code>chars</code>数组中的所有值都应该为零。</li>
+<li>遍历<code>chars</code>数组，检查每个值是否为零。</li>
+<li>如果发现任何非零值，则返回<code>false</code>，表示<code>s</code>和<code>t</code>不是变位词。</li>
 </ul>
 </li>
 <li><p><strong>返回结果</strong>：</p>
 <ul>
-<li>由于我们使用了虚拟头节点，所以最终返回的是<code>dummy.next</code>，即处理后的链表的头节点。</li>
+<li>如果<code>chars</code>数组中所有值都是零，说明<code>s</code>和<code>t</code>是变位词，返回<code>true</code>。</li>
 </ul>
 </li>
 </ol>
-<h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)，n是字符串<code>s</code>和<code>t</code>的长度之和，因为每个字符只被遍历一次。</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() {}</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> {</span><br><span class="line">       <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>);</span><br><span class="line">       dummy.next=head;</span><br><span class="line">       ListNode fast=dummy;</span><br><span class="line">       ListNode slow=dummy;</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)fast=fast.next;<span class="comment">//让快指针走n+1步，这样一会快慢指针一起移动时慢指针会走到删除结点的前一个</span></span><br><span class="line">       <span class="keyword">while</span>(fast!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">        fast=fast.next;</span><br><span class="line">        slow=slow.next;</span><br><span class="line">       }</span><br><span class="line">       slow.next=slow.next.next;</span><br><span class="line">       <span class="keyword">return</span> dummy.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="Problem-面试题-02-07-链表相交"><a href="#Problem-面试题-02-07-链表相交" class="headerlink" title="Problem: 面试题 02.07. 链表相交"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/description/">面试题 02.07. 链表相交</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>如果两个链表相交，那么从相交点开始，它们的后续节点都是相同的；如果两个链表不相交，则返回null。</p>
-<p>以下是该代码的思路：</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isAnagram</span><span class="params">(String s, String t)</span> {</span><br><span class="line">        <span class="type">int</span> []chars=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length();i++){</span><br><span class="line">            chars[s.charAt(i)-<span class="string">'a'</span>]++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;t.length();i++){</span><br><span class="line">            chars[t.charAt(i)-<span class="string">'a'</span>]--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> count:chars){</span><br><span class="line">            <span class="keyword">if</span>(count!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-349-两个数组的交集"><a href="#Problem-349-两个数组的交集" class="headerlink" title="Problem: 349. 两个数组的交集"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/description/">349. 两个数组的交集</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>计算两个整数数组<code>nums1</code>和<code>nums2</code>的交集。使用Set，具体思路如下：</p>
 <ol>
-<li><p><strong>计算两个链表的长度</strong>：</p>
+<li><p><strong>边界情况处理</strong>：</p>
 <ul>
-<li>使用两个指针<code>curA</code>和<code>curB</code>分别遍历两个链表<code>headA</code>和<code>headB</code>，同时计算它们的长度<code>lenA</code>和<code>lenB</code>。</li>
+<li>如果<code>nums1</code>或<code>nums2</code>中的任何一个为<code>null</code>，或者它们的长度为0，那么它们的交集自然是空集。因此，方法直接返回一个新的空整数数组。</li>
 </ul>
 </li>
-<li><p><strong>调整指针位置</strong>：</p>
+<li><p><strong>创建HashSet集合</strong>：</p>
 <ul>
-<li>比较两个链表的长度，将较长的链表的头指针<code>curA</code>和长度<code>lenA</code>与较短的链表的对应变量进行交换。</li>
-<li>这样做的目的是为了让两个指针<code>curA</code>和<code>curB</code>从相同的位置开始遍历，即较长的链表先向前移动<code>lenB - lenA</code>步，使得两个指针距离链表尾部的距离相同。</li>
+<li>创建一个<code>HashSet</code>集合<code>set1</code>，用于存储数组<code>nums1</code>中的元素。</li>
+<li>创建一个<code>HashSet</code>集合<code>set2</code>，用于存储两个数组的交集元素。</li>
 </ul>
 </li>
-<li><p><strong>寻找相交节点</strong>：</p>
+<li><p><strong>填充set1</strong>：</p>
 <ul>
-<li>从调整后的位置开始，同时遍历两个链表，每次移动<code>curA</code>和<code>curB</code>指针。</li>
-<li>如果两个链表相交，那么它们会在某个节点上相遇，此时返回该节点。</li>
-<li>如果两个链表不相交，那么<code>curA</code>或<code>curB</code>会先到达链表尾部（null），此时返回null。</li>
+<li>遍历数组<code>nums1</code>，将每个元素添加到<code>set1</code>中。由于<code>HashSet</code>的特性，重复的元素会被自动过滤掉，因此<code>set1</code>中只会包含<code>nums1</code>中的唯一元素。</li>
+</ul>
+</li>
+<li><p><strong>计算交集并填充set2</strong>：</p>
+<ul>
+<li>遍历数组<code>nums2</code>，对于每个元素：<ul>
+<li>如果该元素存在于<code>set1</code>中（即它也是<code>nums1</code>的元素），则将其添加到<code>set2</code>中。</li>
+</ul>
+</li>
+<li>这一步结束后，<code>set2</code>中包含了两个数组的交集元素。</li>
+</ul>
+</li>
+<li><p><strong>转换并返回结果</strong>：</p>
+<ul>
+<li>使用Java 8的Stream API，将<code>set2</code>中的元素转换为一个整数流。</li>
+<li>使用<code>mapToInt</code>方法将流中的元素转换为<code>int</code>类型。</li>
+<li>最后，使用<code>toArray</code>方法将流转换为整数数组。</li>
 </ul>
 </li>
 </ol>
-<blockquote>
-<p>关于使用虚拟头节点的问题，在这个问题中，使用虚拟头节点并没有直接的好处。因为算法的核心在于比较两个链表的长度，并据此调整指针的起始位置，然后同时遍历两个链表以找到相交点。虚拟头节点主要用于处理<strong>删除头节点或头节点插入</strong>的特殊情况，但在这个问题中，我们并不需要在链表头部进行任何操作。</p>
-</blockquote>
-<h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n + m)</p>
-<p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) {</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> {</span><br><span class="line">       ListNode curA=headA;</span><br><span class="line">       ListNode curB=headB;</span><br><span class="line">       <span class="type">int</span> lenA=<span class="number">0</span>,lenB=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(curA!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">            lenA++;</span><br><span class="line">            curA=curA.next;</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">while</span>(curB!=<span class="literal">null</span>){</span><br><span class="line">        lenB++;</span><br><span class="line">        curB=curB.next;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">        curA=headA;</span><br><span class="line">        curB=headB;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(lenA&gt;lenB)</span><br><span class="line">       {</span><br><span class="line">        <span class="type">int</span> tmp=lenA;</span><br><span class="line">        lenA=lenB;</span><br><span class="line">        lenB=tmp;</span><br><span class="line">        ListNode tmpN=curA;</span><br><span class="line">        curA=curB;</span><br><span class="line">        curB=tmpN;</span><br><span class="line">       }</span><br><span class="line">       <span class="type">int</span> l=lenB-lenA;</span><br><span class="line">       <span class="keyword">while</span>(l-- &gt;<span class="number">0</span>)</span><br><span class="line">       {</span><br><span class="line">        curB=curB.next;</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">while</span>(curB!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">         <span class="keyword">if</span>(curA==curB)<span class="keyword">return</span> curA;</span><br><span class="line">        curB=curB.next;</span><br><span class="line">        curA=curA.next;</span><br><span class="line">       </span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="Problem-142-环形链表-II"><a href="#Problem-142-环形链表-II" class="headerlink" title="Problem: 142. 环形链表 II"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/description/">142. 环形链表 II</a></h2><h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>检测一个单链表中是否有环，并返回环的入口节点。如果链表没有环，则返回null。</p>
-<p>以下是该代码的思路：</p>
+<h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:O(n+m)</p>
+<p>空间复杂度:O(n)</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] intersection(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) {</span><br><span class="line">      <span class="keyword">if</span>(nums1==<span class="literal">null</span>||nums2==<span class="literal">null</span>||nums1.length==<span class="number">0</span>||nums2.length==<span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">0</span>];</span><br><span class="line">      Set&lt;Integer&gt; set1=<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">      Set&lt;Integer&gt; set2=<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> x:nums1){</span><br><span class="line">        set1.add(x);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> x:nums2){</span><br><span class="line">        <span class="keyword">if</span>(set1.contains(x)){</span><br><span class="line">            set2.add(x);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> set2.stream().mapToInt(x-&gt;x).toArray();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="Problem-202-快乐数"><a href="#Problem-202-快乐数" class="headerlink" title="Problem: 202. 快乐数"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/description/">202. 快乐数</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>判断一个正整数<code>n</code>是否是一个“快乐数”。快乐数的定义是：一个正整数，按照如下方式反复替换，最终能够得到数字1。对于正整数<code>n</code>，用<code>n</code>的每个位上的数字的平方和得到一个新的数，重复这个过程，直到结果为1。</p>
 <ol>
-<li><p><strong>使用快慢指针检测环</strong>：</p>
+<li><p><strong>初始化HashSet集合</strong>：<br>使用<code>HashSet</code>集合<code>set1</code>来记录已经出现的数</p>
+</li>
+<li><p><strong>主循环</strong>：<br>使用<code>while</code>循环，条件是<code>n</code>不等于1且<code>n</code>没有出现在<code>set1</code>中。循环体执行以下操作：</p>
 <ul>
-<li>初始化两个指针，<code>fast</code>（快指针）和<code>slow</code>（慢指针），都指向链表的头节点<code>head</code>。</li>
-<li>快指针每次移动两步，慢指针每次移动一步。</li>
-<li>如果链表中存在环，那么快慢指针最终会在环内的某个节点相遇。</li>
-<li>如果链表中没有环，那么快指针会先到达链表的尾部（null），此时可以判断链表没有环。</li>
+<li>将<code>n</code>添加到<code>set1</code>中，以记录已经访问过这个数。</li>
+<li>调用<code>getNextNumber</code>方法，获取<code>n</code>的下一个数（即每个位上数字的平方和），并将结果赋值给<code>n</code>。</li>
 </ul>
 </li>
-<li><p><strong>找到环的入口节点</strong>：</p>
-<ul>
-<li>当快慢指针相遇时，设相遇点为<code>meet</code>。</li>
-<li>此时，慢指针<code>slow</code>已经走了<code>s</code>步（假设链表头到环入口的距离为<code>x</code>，环入口到相遇点的距离为<code>y</code>，则<code>s = x + y</code>）。</li>
-<li>快指针<code>fast</code>由于速度是慢指针的两倍，所以走了<code>2s</code>步。由于快指针比慢指针多走了一个环的周长<code>c</code>，所以<code>2s = s + c</code>，即<code>s = c</code>。</li>
-<li>这意味着，从链表头到环入口的距离<code>x</code>，与从相遇点到环入口的距离相等。</li>
-<li>因此，我们可以将两个指针分别重新指向链表头和相遇点，然后每次各自前进一步，直到它们再次相遇。相遇点即为环的入口节点。</li>
-</ul>
+<li><p><strong>判断结果</strong>：<br>循环结束后，检查<code>n</code>是否等于1。如果等于1，说明<code>n</code>是一个快乐数，返回<code>true</code>；否则，不是一个快乐数，返回<code>false</code>。</p>
 </li>
 </ol>
-<p>代码中的具体实现：</p>
+<p><code>getNextNumber</code>方法用于计算一个数的下一个数，即每个位上数字的平方和。具体步骤如下：</p>
 <ul>
-<li><code>while(fast!=null&amp;&amp;fast.next!=null)</code>：确保快指针<code>fast</code>不会越界，即不会访问到null的next属性。</li>
-<li><code>if(fast==slow)</code>：当快慢指针相遇时，执行寻找环入口节点的逻辑。</li>
-<li><code>ListNode index1=slow; ListNode index2=head;</code>：初始化两个新指针<code>index1</code>和<code>index2</code>，分别指向相遇点和链表头。</li>
-<li><code>while(index1!=index2)</code>：通过每次移动<code>index1</code>和<code>index2</code>各一步，直到它们相遇，找到环的入口节点。</li>
+<li>初始化一个变量<code>res</code>为0，用于存储平方和的结果。</li>
+<li>使用<code>while</code>循环，条件是<code>x</code>不等于0。循环体执行以下操作：<ul>
+<li>计算<code>x</code>的个位数<code>tmp</code>（即<code>x</code>除以10的余数）。</li>
+<li>将<code>tmp</code>的平方加到<code>res</code>上。</li>
+<li>更新<code>x</code>为<code>x</code>除以10的商，即去掉个位数。</li>
 </ul>
-<p>最后，如果快慢指针没有相遇，即链表没有环，则返回null。</p>
-<h3 id="复杂度-3"><a href="#复杂度-3" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)，其中n是链表的长度。因为快指针最多遍历两遍链表（一次是找到相遇点，另一次是与慢指针一起找到环入口点），慢指针最多遍历一遍链表。</p>
-<p>空间复杂度:<br>O(1)，因为只使用了常数个指针变量</p>
-<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) {</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> {</span><br><span class="line">       ListNode fast=head;</span><br><span class="line">       ListNode slow=head;</span><br><span class="line">       <span class="keyword">while</span>(fast!=<span class="literal">null</span>&amp;&amp;fast.next!=<span class="literal">null</span>){</span><br><span class="line">        slow=slow.next;</span><br><span class="line">        fast=fast.next.next;</span><br><span class="line">        <span class="keyword">if</span>(fast==slow){</span><br><span class="line">            ListNode index1=slow;</span><br><span class="line">            ListNode index2=head;</span><br><span class="line">            <span class="keyword">while</span>(index1!=index2)</span><br><span class="line">            {</span><br><span class="line">                index1=index1.next;</span><br><span class="line">                index2=index2.next;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> index1;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>循环结束后，返回<code>res</code>作为结果。</li>
+</ul>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> {</span><br><span class="line">        Set&lt;Integer&gt; set1 =<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">1</span>&amp;&amp;!set1.contains(n)){</span><br><span class="line">            set1.add(n);</span><br><span class="line">            n=getNextNumber(n);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> n==<span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getNextNumber</span><span class="params">(<span class="type">int</span> x)</span>{</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x!=<span class="number">0</span>){</span><br><span class="line">            <span class="type">int</span> tmp=x%<span class="number">10</span>;</span><br><span class="line">            res+=tmp*tmp;</span><br><span class="line">            x=x/<span class="number">10</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-1-两数之和"><a href="#Problem-1-两数之和" class="headerlink" title="Problem: 1. 两数之和"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/">1. 两数之和</a></h2><h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>使用一个<code>HashMap</code>来存储数组元素和它们对应的下标。遍历数组时，对于每个元素<code>nums[i]</code>，我们检查<code>target - nums[i]</code>是否已经在<code>HashMap</code>中。如果在，说明我们找到了两个数的和为目标值，直接返回这两个数的下标。如果不在，就将当前元素<code>nums[i]</code>和它的下标<code>i</code>存入<code>HashMap</code>中，以便后续的查找。</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>先find再insert，保证不会和自己匹配。在遍历数组时，先在<code>HashMap</code>中查找<code>target - nums[i]</code>，然后再将当前元素<code>nums[i]</code>和其下标<code>i</code>存入<code>HashMap</code>。这样做的原因是，如果我们先存入再查找，那么对于数组中的每个元素，我们可能会错误地将其与自身匹配，即它的两倍等于<code>target</code>。但是题目要求的是两个<strong>不同</strong>的数的和，所以我们需要避免这种自匹配的情况。</p>
+<p>举个例子，假设<code>nums = [3, 3]</code>，<code>target = 6</code>。如果我们先存入再查找，那么对于第一个元素3，我们会将其存入<code>HashMap</code>，然后查找<code>target - nums[0] = 3</code>，发现<code>HashMap</code>中已经存在这个键，于是返回<code>[0, 0]</code>，这是错误的。正确的答案应该是没有解，因为数组中不存在两个不同的数的和为6。</p>
+<h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:O(n)</p>
+<p>空间复杂度:O(n)</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) {</span><br><span class="line">       Map&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Integer,Integer&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++){</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(target-nums[i])){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{map.get(target-nums[i]),i};</span><br><span class="line">        }</span><br><span class="line">        map.put(nums[i],i);</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//笔记：先find再insert，保证不会和自己匹配。</span></span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -541,7 +608,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://2021113290.github.io/2024/03/23/suan-fa-shua-ti-lian-biao-day4/">https://2021113290.github.io/2024/03/23/suan-fa-shua-ti-lian-biao-day4/</a>
+                    <a href="https://2021113290.github.io/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/">https://2021113290.github.io/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -583,8 +650,8 @@
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                    <span class="chip bg-color">链表</span>
+                                <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                    <span class="chip bg-color">哈希表</span>
                                 </a>
                             
                         </div>
@@ -630,9 +697,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/">
                     <div class="card-image">
@@ -650,9 +718,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -665,6 +733,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -687,13 +756,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/22/suan-fa-shua-ti-lian-biao-day3/">
+                <a href="/2024/03/23/suan-fa-shua-ti-lian-biao-day4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="算法刷题-链表day3">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="算法刷题-链表day4">
                         
-                        <span class="card-title">算法刷题-链表day3</span>
+                        <span class="card-title">算法刷题-链表day4</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -704,7 +773,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
                             </span>
                         <span class="publish-author">
                             
