@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法刷题-哈希表day5, xy的每一天">
+    <meta name="keywords" content="算法刷题-哈希表day, xy的每一天">
     <meta name="description" content="坚持刷题写博客总结60day计划">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法刷题-哈希表day5 | xy的每一天</title>
+    <title>算法刷题-哈希表day | xy的每一天</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法刷题-哈希表day5</h1>
+                    <h1 class="description center-align post-title">算法刷题-哈希表day</h1>
                 </div>
             </div>
         </div>
@@ -348,7 +348,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-25
+                    2024-03-26
                 </div>
                 
 
@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.5k
                 </div>
                 
 
@@ -382,206 +382,97 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ol>
-<li>字符串长度<code>s.length()</code>,数组长度<code>s.length</code></li>
-<li><strong>数组==null和数组长度为0不是同一个意思</strong>。<br><code>数组 == null</code> 是检查数组变量是否指向一个数组对象，而 <code>数组长度为0</code> 是检查数组对象是否包含任何元素。两者都是检查数组的不同方面，因此它们的意义并不相同。</li>
-<li><code>Java set</code>基本操作</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>add()</td>
-<td>添加元素</td>
-</tr>
-<tr>
-<td>contains()</td>
-<td>判断元素是否存在于集合当中</td>
-</tr>
-<tr>
-<td>remove()</td>
-<td>删除集合中的元素</td>
-</tr>
-<tr>
-<td>clear()</td>
-<td>删除集合中所有元素</td>
-</tr>
-<tr>
-<td>size()</td>
-<td>计算集合中的元素数量</td>
-</tr>
-<tr>
-<td>for-each</td>
-<td>迭代 HashSet 中的元素</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li><code>Java map</code>基本操作</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean containsKey(Object k)</td>
-<td>如果此映射包含指定键的映射关系，则返回 true。</td>
-</tr>
-<tr>
-<td>boolean containsValue(Object v)(Object v)</td>
-<td>如果此映射将一个或多个键映射到指定值，则返回 true。</td>
-</tr>
-<tr>
-<td>Set entrySet( )</td>
-<td>返回此映射中包含的映射关系的 Set 视图。</td>
-</tr>
-<tr>
-<td>boolean equals(Object obj)</td>
-<td>比较指定的对象与此映射是否相等。</td>
-</tr>
-<tr>
-<td>Object get(Object k)</td>
-<td>返回指定键所映射的值；如果此映射不包含该键的映射关系，则返回 null。</td>
-</tr>
-<tr>
-<td>int hashCode( )</td>
-<td>返回此映射的哈希码值。</td>
-</tr>
-<tr>
-<td>boolean isEmpty( )</td>
-<td>如果此映射未包含键-值映射关系，则返回 true。</td>
-</tr>
-<tr>
-<td>Set keySet( )</td>
-<td>返回此映射中包含的键的 Set 视图。</td>
-</tr>
-<tr>
-<td>Object put(Object k, Object v)</td>
-<td>将指定的值与此映射中的指定键关联</td>
-</tr>
-<tr>
-<td>Object remove(Object k)</td>
-<td>如果存在一个键的映射关系，则将其从此映射中移除</td>
-</tr>
-<tr>
-<td>int size( )</td>
-<td>返回此映射中的键-值映射关系数。</td>
-</tr>
-</tbody></table>
-<h2 id="Problem-242-有效的字母异位词"><a href="#Problem-242-有效的字母异位词" class="headerlink" title="Problem: 242. 有效的字母异位词"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/description/">242. 有效的字母异位词</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>变位词是指两个单词，它们包含相同数量和种类的字母，但顺序不同。题目中说只有小写字母</p>
+                <h2 id="Problem-454-四数相加-II"><a href="#Problem-454-四数相加-II" class="headerlink" title="Problem: 454. 四数相加 II"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum-ii/description/">454. 四数相加 II</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>核心思想是，利用HashMap数据结构快速查询和存储组合数出现的次数，进而快速得到四数之和为0的组合数。</p>
+<p>具体思路如下：</p>
 <ol>
-<li><p><strong>初始化字符计数数组</strong>：</p>
-<ul>
-<li>创建一个长度为26的整数数组<code>chars</code>。这个数组用于记录每个<strong>小写字母</strong>在字符串<code>s</code>中出现的次数。数组的每个索引对应一个小写字母（’a’到’z’），而值则是该字母在<code>s</code>中出现的次数。</li>
-</ul>
+<li><p><strong>初始化HashMap</strong>：<br>首先，创建一个HashMap，其键是两个元素之和，值是这个和出现的次数。</p>
 </li>
-<li><p><strong>统计字符串<code>s</code>中每个字符的出现次数</strong>：</p>
-<ul>
-<li>遍历字符串<code>s</code>的每个字符。</li>
-<li>对于每个字符，通过<code>s.charAt(i) - 'a'</code>计算其在<code>chars</code>数组中的索引（因为字符’a’的ASCII码值减去’a’的ASCII码值等于0，字符’b’的ASCII码值减去’a’的ASCII码值等于1，以此类推）。</li>
-<li>将对应索引的值加1，表示该字符在<code>s</code>中出现了一次。</li>
-</ul>
+<li><p><strong>计算nums1和nums2的两数之和</strong>：<br>对于nums1中的每一个元素i，遍历nums2中的每一个元素j，计算i和j的和，并更新HashMap中对应键（即i+j的和）的值。如果i+j的和已经存在于HashMap中，那么其值（即出现的次数）加1；如果i+j的和不在HashMap中，那么将其添加到HashMap中，并设置其值为1。</p>
+<p>这样，遍历结束后，HashMap中存储了nums1和nums2中所有可能的两数之和及其出现的次数。</p>
 </li>
-<li><p><strong>从字符计数数组中减去字符串<code>t</code>中每个字符的出现次数</strong>：</p>
-<ul>
-<li>遍历字符串<code>t</code>的每个字符。</li>
-<li>同样地，计算每个字符在<code>chars</code>数组中的索引。</li>
-<li>将对应索引的值减1，表示从<code>s</code>中的计数中减去该字符在<code>t</code>中的出现次数。</li>
-</ul>
+<li><p><strong>计算nums3和nums4的两数之和，并与HashMap中的值进行匹配</strong>：<br>接下来，对于nums3中的每一个元素i，遍历nums4中的每一个元素j，计算-i-j的和（这里取负是为了找到能与nums1和nums2中的某两个数之和抵消的数）。然后，查看HashMap中是否存在这个和（即检查HashMap的键是否为-i-j）。</p>
+<p>如果存在，说明nums1和nums2中存在两个数，它们的和与nums3中的i和nums4中的j的和的相反数相等，即这四个数的和为0。因此，将HashMap中对应键的值（即出现的次数）加到结果res中。</p>
+<p>遍历结束后，res的值就是所有四数之和为0的组合数。</p>
 </li>
-<li><p><strong>检查字符计数数组是否全为零</strong>：</p>
-<ul>
-<li>如果<code>s</code>和<code>t</code>是变位词，那么对于所有字符，<code>s</code>中的出现次数应该等于<code>t</code>中的出现次数。因此，在减去<code>t</code>中的字符出现次数后，<code>chars</code>数组中的所有值都应该为零。</li>
-<li>遍历<code>chars</code>数组，检查每个值是否为零。</li>
-<li>如果发现任何非零值，则返回<code>false</code>，表示<code>s</code>和<code>t</code>不是变位词。</li>
-</ul>
-</li>
-<li><p><strong>返回结果</strong>：</p>
-<ul>
-<li>如果<code>chars</code>数组中所有值都是零，说明<code>s</code>和<code>t</code>是变位词，返回<code>true</code>。</li>
-</ul>
+<li><p><strong>返回结果</strong>：<br>最后，返回res作为结果。</p>
 </li>
 </ol>
-<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)，n是字符串<code>s</code>和<code>t</code>的长度之和，因为每个字符只被遍历一次。</p>
-<p>空间复杂度:<br>O(1)</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isAnagram</span><span class="params">(String s, String t)</span> {</span><br><span class="line">        <span class="type">int</span> []chars=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length();i++){</span><br><span class="line">            chars[s.charAt(i)-<span class="string">'a'</span>]++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;t.length();i++){</span><br><span class="line">            chars[t.charAt(i)-<span class="string">'a'</span>]--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> count:chars){</span><br><span class="line">            <span class="keyword">if</span>(count!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="Problem-349-两个数组的交集"><a href="#Problem-349-两个数组的交集" class="headerlink" title="Problem: 349. 两个数组的交集"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/description/">349. 两个数组的交集</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>计算两个整数数组<code>nums1</code>和<code>nums2</code>的交集。使用Set，具体思路如下：</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fourSumCount</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2, <span class="type">int</span>[] nums3, <span class="type">int</span>[] nums4)</span> {</span><br><span class="line">        <span class="comment">//&lt;两个元素之和，出现的次数&gt;</span></span><br><span class="line">        Map&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i:nums1){</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j:nums2){</span><br><span class="line">                map.put(i+j,map.getOrDefault(i+j,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i:nums3){</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j:nums4){</span><br><span class="line">                res+=map.getOrDefault(-i-j,<span class="number">0</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-383-赎金信"><a href="#Problem-383-赎金信" class="headerlink" title="Problem: 383. 赎金信"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ransom-note/description/">383. 赎金信</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>判断一份“赎金信”（ransomNote）是否可以通过剪切杂志（magazine）中的字符来构造。<br>思路是，首先统计杂志中每个字符出现的次数，然后逐个检查赎金信中的字符是否在杂志中出现，并且出现的次数是否足够。</p>
+<p>以下是具体的思路步骤：</p>
 <ol>
-<li><p><strong>边界情况处理</strong>：</p>
+<li><p><strong>初始化HashMap</strong>：<br>创建一个HashMap，键是字符，值是该字符在杂志中出现的次数。</p>
+</li>
+<li><p><strong>统计杂志中字符的出现次数</strong>：<br>遍历杂志（magazine）字符串中的每一个字符，对于每个字符，检查它是否已经在HashMap中。如果在，则将其对应的值（即出现次数）加1；如果不在，则将其添加到HashMap中，并设置其值为1。这样，当遍历结束时，HashMap中就存储了杂志中所有字符及其出现的次数。</p>
+</li>
+<li><p><strong>检查赎金信中的字符</strong>：<br>遍历赎金信（ransomNote）字符串中的每一个字符，对于每个字符，检查它是否在HashMap的键中。</p>
 <ul>
-<li>如果<code>nums1</code>或<code>nums2</code>中的任何一个为<code>null</code>，或者它们的长度为0，那么它们的交集自然是空集。因此，方法直接返回一个新的空整数数组。</li>
+<li>如果在，说明这个字符在杂志中有出现，那么将其在HashMap中对应的值（即出现次数）减1。</li>
+<li>如果不在，或者该字符在杂志中的出现次数已经为0（即减1后变为负数），则说明杂志中的字符不足以构造赎金信，直接返回false。</li>
 </ul>
 </li>
-<li><p><strong>创建HashSet集合</strong>：</p>
-<ul>
-<li>创建一个<code>HashSet</code>集合<code>set1</code>，用于存储数组<code>nums1</code>中的元素。</li>
-<li>创建一个<code>HashSet</code>集合<code>set2</code>，用于存储两个数组的交集元素。</li>
-</ul>
-</li>
-<li><p><strong>填充set1</strong>：</p>
-<ul>
-<li>遍历数组<code>nums1</code>，将每个元素添加到<code>set1</code>中。由于<code>HashSet</code>的特性，重复的元素会被自动过滤掉，因此<code>set1</code>中只会包含<code>nums1</code>中的唯一元素。</li>
-</ul>
-</li>
-<li><p><strong>计算交集并填充set2</strong>：</p>
-<ul>
-<li>遍历数组<code>nums2</code>，对于每个元素：<ul>
-<li>如果该元素存在于<code>set1</code>中（即它也是<code>nums1</code>的元素），则将其添加到<code>set2</code>中。</li>
-</ul>
-</li>
-<li>这一步结束后，<code>set2</code>中包含了两个数组的交集元素。</li>
-</ul>
-</li>
-<li><p><strong>转换并返回结果</strong>：</p>
-<ul>
-<li>使用Java 8的Stream API，将<code>set2</code>中的元素转换为一个整数流。</li>
-<li>使用<code>mapToInt</code>方法将流中的元素转换为<code>int</code>类型。</li>
-<li>最后，使用<code>toArray</code>方法将流转换为整数数组。</li>
-</ul>
+<li><p><strong>返回结果</strong>：<br>如果赎金信中的所有字符都在杂志中出现，并且出现的次数都足够，那么在遍历结束后，代码会执行到返回true的语句。否则，在遍历过程中会因为找不到字符或字符数量不足而返回false。</p>
 </li>
 </ol>
-<h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:O(n+m)</p>
-<p>空间复杂度:O(n)</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] intersection(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) {</span><br><span class="line">      <span class="keyword">if</span>(nums1==<span class="literal">null</span>||nums2==<span class="literal">null</span>||nums1.length==<span class="number">0</span>||nums2.length==<span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">0</span>];</span><br><span class="line">      Set&lt;Integer&gt; set1=<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">      Set&lt;Integer&gt; set2=<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> x:nums1){</span><br><span class="line">        set1.add(x);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> x:nums2){</span><br><span class="line">        <span class="keyword">if</span>(set1.contains(x)){</span><br><span class="line">            set2.add(x);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> set2.stream().mapToInt(x-&gt;x).toArray();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-<h2 id="Problem-202-快乐数"><a href="#Problem-202-快乐数" class="headerlink" title="Problem: 202. 快乐数"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/description/">202. 快乐数</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>判断一个正整数<code>n</code>是否是一个“快乐数”。快乐数的定义是：一个正整数，按照如下方式反复替换，最终能够得到数字1。对于正整数<code>n</code>，用<code>n</code>的每个位上的数字的平方和得到一个新的数，重复这个过程，直到结果为1。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canConstruct</span><span class="params">(String ransomNote, String magazine)</span> {</span><br><span class="line">       <span class="comment">//&lt;赎金信上的字母，出现的次数&gt;</span></span><br><span class="line">       Map&lt;Character,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;magazine.length();i++){</span><br><span class="line">        map.put(magazine.charAt(i),map.getOrDefault(magazine.charAt(i),<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;ransomNote.length();i++){</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(ransomNote.charAt(i))){</span><br><span class="line">            map.put(ransomNote.charAt(i),map.get(ransomNote.charAt(i))-<span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(!map.containsKey(ransomNote.charAt(i))||map.get(ransomNote.charAt(i))&lt;<span class="number">0</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-15-三数之和"><a href="#Problem-15-三数之和" class="headerlink" title="Problem: 15. 三数之和"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15. 三数之和</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>核心思路是首先对数组进行排序，然后使用三个指针来遍历数组，找出所有不重复的三元组，使得这三个数的和为0。</p>
+<p>具体思路如下：</p>
 <ol>
-<li><p><strong>初始化HashSet集合</strong>：<br>使用<code>HashSet</code>集合<code>set1</code>来记录已经出现的数</p>
+<li><p><strong>初始化结果列表</strong>：<br>首先，创建一个空的ArrayList <code>res</code>，用于存储结果。</p>
 </li>
-<li><p><strong>主循环</strong>：<br>使用<code>while</code>循环，条件是<code>n</code>不等于1且<code>n</code>没有出现在<code>set1</code>中。循环体执行以下操作：</p>
+<li><p><strong>对数组进行排序</strong>：<br>使用<code>Arrays.sort(nums)</code>对输入的整数数组<code>nums</code>进行排序。排序是解决这个问题的关键步骤，因为排序后，我们可以利用有序数组的特性来减少不必要的遍历。</p>
+</li>
+<li><p><strong>遍历数组</strong>：<br>使用指针<code>i</code>从数组的第一个元素开始遍历。在遍历过程中，需要注意以下情况：</p>
 <ul>
-<li>将<code>n</code>添加到<code>set1</code>中，以记录已经访问过这个数。</li>
-<li>调用<code>getNextNumber</code>方法，获取<code>n</code>的下一个数（即每个位上数字的平方和），并将结果赋值给<code>n</code>。</li>
+<li>如果<code>nums[i]</code>大于0，由于数组已排序，因此后续的所有元素都大于0，不可能再找到三个数之和为0的情况，所以直接返回结果列表。</li>
+<li>如果<code>i</code>不是数组的第一个元素，并且<code>nums[i]</code>与前一个元素<code>nums[i-1]</code>相同，则跳过此次循环，避免重复。</li>
 </ul>
 </li>
-<li><p><strong>判断结果</strong>：<br>循环结束后，检查<code>n</code>是否等于1。如果等于1，说明<code>n</code>是一个快乐数，返回<code>true</code>；否则，不是一个快乐数，返回<code>false</code>。</p>
+<li><p><strong>使用双指针寻找另外两个数</strong>：<br>对于每个<code>nums[i]</code>，使用双指针<code>left</code>和<code>right</code>分别指向<code>i</code>的下一个位置和数组末尾。双指针的作用是在已排序的数组中找到两个数，使得与<code>nums[i]</code>的和为0。</p>
+<ul>
+<li>当<code>left &lt; right</code>时，计算当前三个数的和<code>sum</code>。<ul>
+<li>如果<code>sum</code>等于0，则找到了一个符合要求的三元组，将其添加到结果列表中，并移动<code>left</code>和<code>right</code>指针，跳过重复的元素，以避免结果重复。</li>
+<li>如果<code>sum</code>大于0，说明当前的和偏大，需要减小和，因此将<code>right</code>指针左移。</li>
+<li>如果<code>sum</code>小于0，说明当前的和偏小，需要增大和，因此将<code>left</code>指针右移。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>返回结果</strong>：<br>当遍历完所有可能的<code>nums[i]</code>后，返回结果列表<code>res</code>。</p>
 </li>
 </ol>
-<p><code>getNextNumber</code>方法用于计算一个数的下一个数，即每个位上数字的平方和。具体步骤如下：</p>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n^2)，其中n是数组的长度。因为排序的复杂度是O(n log n)，而遍历数组和双指针的复杂度是O(n^2)</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">threeSum</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">       List&lt;List&lt;Integer&gt;&gt; res=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">       Arrays.sort(nums);</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++){</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&gt;<span class="number">0</span>)<span class="keyword">return</span> res;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">0</span>&amp;&amp;nums[i]==nums[i-<span class="number">1</span>])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> left=i+<span class="number">1</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right){</span><br><span class="line">            <span class="type">int</span> sum=nums[i]+nums[left]+nums[right];</span><br><span class="line">            <span class="keyword">if</span>(sum==<span class="number">0</span>){</span><br><span class="line">                res.add(Arrays.asList(nums[i],nums[left],nums[right]));</span><br><span class="line">                <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[right]==nums[right-<span class="number">1</span>])right--;</span><br><span class="line">                <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[left]==nums[left+<span class="number">1</span>])left++;</span><br><span class="line">                right--;</span><br><span class="line">                left++;</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(sum&gt;<span class="number">0</span>){</span><br><span class="line">                right--;</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(sum&lt;<span class="number">0</span>){</span><br><span class="line">                left++;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Problem-18-四数之和"><a href="#Problem-18-四数之和" class="headerlink" title="Problem: 18. 四数之和"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum/description/">18. 四数之和</a></h2><h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>就是上一道题的变体呢~核心思路是首先对数组进行排序，然后使用四个指针（或称为迭代变量）来遍历数组，找出所有不重复的四元组，使得这四个数的和等于给定的目标和。<br><strong>由此，用同样的思路也可以求五数之和，六数之和</strong></p>
+<p>具体思路如下：</p>
+<ol>
+<li><p><strong>初始化结果列表</strong>：<br>创建一个空的ArrayList <code>res</code>，用于存储满足条件的四元组。</p>
+</li>
+<li><p><strong>对数组进行排序</strong>：<br>使用<code>Arrays.sort(nums)</code>对输入的整数数组<code>nums</code>进行排序。排序有助于减少不必要的遍历，并允许我们利用数组的有序性来避免重复结果。</p>
+</li>
+<li><p><strong>外层循环遍历数组</strong>：<br>使用指针<code>i</code>从数组的第一个元素开始遍历。在遍历过程中，需要注意以下情况：</p>
 <ul>
-<li>初始化一个变量<code>res</code>为0，用于存储平方和的结果。</li>
-<li>使用<code>while</code>循环，条件是<code>x</code>不等于0。循环体执行以下操作：<ul>
-<li>计算<code>x</code>的个位数<code>tmp</code>（即<code>x</code>除以10的余数）。</li>
-<li>将<code>tmp</code>的平方加到<code>res</code>上。</li>
-<li>更新<code>x</code>为<code>x</code>除以10的商，即去掉个位数。</li>
+<li>如果<code>nums[i]</code>大于0且<code>nums[i]</code>已经大于目标和<code>target</code>，由于数组已排序，后续所有元素也都会大于<code>target</code>，因此直接返回结果列表。</li>
+<li>如果<code>i</code>不是数组的第一个元素，并且<code>nums[i]</code>与前一个元素<code>nums[i-1]</code>相同，则跳过此次循环，避免结果重复。</li>
 </ul>
 </li>
-<li>循环结束后，返回<code>res</code>作为结果。</li>
+<li><p><strong>第二层循环遍历数组</strong>：<br>使用指针<code>k</code>从<code>i</code>的下一个位置开始遍历。在遍历过程中，同样要注意跳过重复的元素。</p>
+</li>
+<li><p><strong>使用双指针寻找另外两个数</strong>：<br>对于每一对<code>nums[i]</code>和<code>nums[k]</code>，使用双指针<code>left</code>和<code>right</code>分别指向<code>k</code>的下一个位置和数组末尾。双指针的作用是在已排序的数组中找到两个数，使得与<code>nums[i]</code>和<code>nums[k]</code>的和等于目标和<code>target</code>。</p>
+<ul>
+<li>当<code>left &lt; right</code>时，计算当前四个数的和<code>sum</code>。<ul>
+<li>如果<code>sum</code>等于目标和<code>target</code>，则找到了一个符合要求的四元组，将其添加到结果列表中，并移动<code>left</code>和<code>right</code>指针，跳过重复的元素。</li>
+<li>如果<code>sum</code>大于目标和<code>target</code>，说明当前的和偏大，需要减小和，因此将<code>right</code>指针左移。</li>
+<li>如果<code>sum</code>小于目标和<code>target</code>，说明当前的和偏小，需要增大和，因此将<code>left</code>指针右移。</li>
 </ul>
-<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> {</span><br><span class="line">        Set&lt;Integer&gt; set1 =<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">1</span>&amp;&amp;!set1.contains(n)){</span><br><span class="line">            set1.add(n);</span><br><span class="line">            n=getNextNumber(n);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> n==<span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getNextNumber</span><span class="params">(<span class="type">int</span> x)</span>{</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x!=<span class="number">0</span>){</span><br><span class="line">            <span class="type">int</span> tmp=x%<span class="number">10</span>;</span><br><span class="line">            res+=tmp*tmp;</span><br><span class="line">            x=x/<span class="number">10</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="Problem-1-两数之和"><a href="#Problem-1-两数之和" class="headerlink" title="Problem: 1. 两数之和"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/">1. 两数之和</a></h2><h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>使用一个<code>HashMap</code>来存储数组元素和它们对应的下标。遍历数组时，对于每个元素<code>nums[i]</code>，我们检查<code>target - nums[i]</code>是否已经在<code>HashMap</code>中。如果在，说明我们找到了两个数的和为目标值，直接返回这两个数的下标。如果不在，就将当前元素<code>nums[i]</code>和它的下标<code>i</code>存入<code>HashMap</code>中，以便后续的查找。</p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>先find再insert，保证不会和自己匹配。在遍历数组时，先在<code>HashMap</code>中查找<code>target - nums[i]</code>，然后再将当前元素<code>nums[i]</code>和其下标<code>i</code>存入<code>HashMap</code>。这样做的原因是，如果我们先存入再查找，那么对于数组中的每个元素，我们可能会错误地将其与自身匹配，即它的两倍等于<code>target</code>。但是题目要求的是两个<strong>不同</strong>的数的和，所以我们需要避免这种自匹配的情况。</p>
-<p>举个例子，假设<code>nums = [3, 3]</code>，<code>target = 6</code>。如果我们先存入再查找，那么对于第一个元素3，我们会将其存入<code>HashMap</code>，然后查找<code>target - nums[0] = 3</code>，发现<code>HashMap</code>中已经存在这个键，于是返回<code>[0, 0]</code>，这是错误的。正确的答案应该是没有解，因为数组中不存在两个不同的数的和为6。</p>
-<h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:O(n)</p>
-<p>空间复杂度:O(n)</p>
-<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) {</span><br><span class="line">       Map&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Integer,Integer&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++){</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(target-nums[i])){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{map.get(target-nums[i]),i};</span><br><span class="line">        }</span><br><span class="line">        map.put(nums[i],i);</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//笔记：先find再insert，保证不会和自己匹配。</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>返回结果</strong>：<br>当遍历完所有可能的<code>nums[i]</code>和<code>nums[k]</code>组合后，返回结果列表<code>res</code>。</p>
+</li>
+</ol>
+<h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>这个算法的时间复杂度是O(n^3)，其中n是数组的长度。因为排序的复杂度是O(n log n)，而遍历数组和三层循环的复杂度是O(n^3)。尽管复杂度相对较高，但在实际应用中，对于中等大小的输入，这个算法通常是足够高效的。</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">fourSum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> {</span><br><span class="line">       List&lt;List&lt;Integer&gt;&gt; res=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">       Arrays.sort(nums);</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++){</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&gt;<span class="number">0</span>&amp;&amp;nums[i]&gt;target)<span class="keyword">return</span> res;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">0</span>&amp;&amp;nums[i]==nums[i-<span class="number">1</span>])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> k=i+<span class="number">1</span>;k&lt;nums.length;k++){</span><br><span class="line">            <span class="keyword">if</span>(k&gt;i+<span class="number">1</span>&amp;&amp;nums[k]==nums[k-<span class="number">1</span>])<span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> left=k+<span class="number">1</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left&lt;right){</span><br><span class="line">                <span class="type">int</span> sum=nums[i]+nums[k]+nums[left]+nums[right];</span><br><span class="line">                <span class="keyword">if</span>(sum==target){</span><br><span class="line">                    res.add(Arrays.asList(nums[i],nums[k],nums[left],nums[right]));</span><br><span class="line">                    <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[right]==nums[right-<span class="number">1</span>])right--;</span><br><span class="line">                    <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[left]==nums[left+<span class="number">1</span>])left++;</span><br><span class="line">                    right--;</span><br><span class="line">                    left++;</span><br><span class="line">                }<span class="keyword">else</span> <span class="keyword">if</span>(sum&gt;target){</span><br><span class="line">                    right--;</span><br><span class="line">                }<span class="keyword">else</span> <span class="keyword">if</span>(sum&lt;target){</span><br><span class="line">                    left++;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -608,7 +499,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://2021113290.github.io/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/">https://2021113290.github.io/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/</a>
+                    <a href="https://2021113290.github.io/2024/03/26/suan-fa-shua-ti-ha-xi-biao-day6/">https://2021113290.github.io/2024/03/26/suan-fa-shua-ti-ha-xi-biao-day6/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -697,9 +588,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/03/26/suan-fa-shua-ti-ha-xi-biao-day6/">
                     <div class="card-image">
@@ -717,9 +609,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -732,6 +624,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -754,13 +647,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/23/suan-fa-shua-ti-lian-biao-day4/">
+                <a href="/2024/03/25/suan-fa-shua-ti-ha-xi-biao-day5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="算法刷题-链表day4">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="算法刷题-哈希表day5">
                         
-                        <span class="card-title">算法刷题-链表day4</span>
+                        <span class="card-title">算法刷题-哈希表day5</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -771,7 +664,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-25
                             </span>
                         <span class="publish-author">
                             
@@ -792,8 +685,8 @@
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                        <span class="chip bg-color">链表</span>
+                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="chip bg-color">哈希表</span>
                     </a>
                     
                 </div>
