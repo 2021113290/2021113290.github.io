@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    845
+                    843
                 </div>
                 
 
@@ -407,11 +407,165 @@
 <blockquote>
 <p>BFS最先输出的肯定是最短路径，因为是按宽度搜索的；求最短路径的题可以想想宽搜</p>
 </blockquote>
-<h4 id="2-模板如下："><a href="#2-模板如下：" class="headerlink" title="2. 模板如下："></a>2. 模板如下：</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 判重数组st[]  //入队时判重</span><br><span class="line">2. queue</span><br><span class="line">    queue&lt;-初始状态</span><br><span class="line">    while(queue非空)</span><br><span class="line">    {</span><br><span class="line">        t&lt;-队头 //队头出队</span><br><span class="line">        for(拓展t)</span><br><span class="line">        {</span><br><span class="line">            v&lt;-新节点</span><br><span class="line">            if(!st[v])</span><br><span class="line">            {</span><br><span class="line">                v-&gt;队尾</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="2-模板如下："><a href="#2-模板如下：" class="headerlink" title="2. 模板如下："></a>2. 模板如下：</h4><pre class="line-numbers language-none"><code class="language-none">1. 判重数组st[]  //入队时判重
+2. queue
+    queue&lt;-初始状态
+    while(queue非空)
+    {
+        t&lt;-队头 //队头出队
+        for(拓展t)
+        {
+            v&lt;-新节点
+            if(!st[v])
+            {
+                v-&gt;队尾
+            }
+        }
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="3-具体习题"><a href="#3-具体习题" class="headerlink" title="3. 具体习题"></a>3. 具体习题</h4><h5 id="3-1-献给阿尔吉侬的花束-二维"><a href="#3-1-献给阿尔吉侬的花束-二维" class="headerlink" title="3.1 献给阿尔吉侬的花束(二维)"></a>3.1 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1103/">献给阿尔吉侬的花束(二维)</a></h5><p>具体代码实现如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef pair&lt;int, int&gt; PII;</span><br><span class="line"></span><br><span class="line">const int N = 210;</span><br><span class="line"></span><br><span class="line">char a[N][N];</span><br><span class="line">int dis[N][N];</span><br><span class="line"></span><br><span class="line">void bfs(PII start)</span><br><span class="line">{</span><br><span class="line">    queue&lt;PII&gt; q;</span><br><span class="line">    q.push(start);//队头队，对应步骤1</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    {</span><br><span class="line">        PII u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        int dx[4] = {-1, 0, 1, 0};</span><br><span class="line">        int dy[4] = {0, 1, 0 ,-1};</span><br><span class="line">        for(int i = 0; i &lt; 4; i++)//遍历四个方向，对应步骤2</span><br><span class="line">        {</span><br><span class="line">            int x = u.first + dx[i];</span><br><span class="line">            int y = u.second + dy[i];</span><br><span class="line"></span><br><span class="line">            if(a[x][y] == '#') continue;//如果是'#',不做任何处理</span><br><span class="line">            if(a[x][y] == '.')//如果是 '.'，更新对应内容</span><br><span class="line">            {</span><br><span class="line">                dis[x][y] = dis[u.first][u.second] + 1;</span><br><span class="line">                a[x][y] = '#';</span><br><span class="line">                q.push({x, y});</span><br><span class="line">            }</span><br><span class="line">            if(a[x][y] == 'E')//如果是'E'，找到了，输出</span><br><span class="line">            {</span><br><span class="line">                cout &lt;&lt; dis[u.first][u.second] + 1 &lt;&lt; endl;</span><br><span class="line">                return;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    cout &lt;&lt; "oop!" &lt;&lt; endl;//没有找到</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)</span><br><span class="line">    {</span><br><span class="line">        memset(a, '#', sizeof(a));//初始化地图，各个点都是墙。</span><br><span class="line">        memset(dis, 0, sizeof(dis));//初始化dis</span><br><span class="line">        int n,m;</span><br><span class="line">        PII start;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        for(int i = 1; i &lt;= n; i++)//从第一行存储地图，因为四周都是墙，bfs时，可以不做越界判断</span><br><span class="line">        {</span><br><span class="line">            for(int j = 1; j &lt;= m; j++)//从第一；列存储地图，因为四周都是墙，bfs时，可以不做越界判断</span><br><span class="line">            {</span><br><span class="line">                cin &gt;&gt; a[i][j];</span><br><span class="line">                if(a[i][j] == 'S')//记录下起点位置。</span><br><span class="line">                    start.first = i, start.second = j, a[i][j] = '#';</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        bfs(start);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;cstring&gt;
+using namespace std;
+typedef pair&lt;int, int&gt; PII;
+
+const int N = 210;
+
+char a[N][N];
+int dis[N][N];
+
+void bfs(PII start)
+{
+    queue&lt;PII&gt; q;
+    q.push(start);//队头队，对应步骤1
+    while(!q.empty())
+    {
+        PII u = q.front();
+        q.pop();
+        int dx[4] = {-1, 0, 1, 0};
+        int dy[4] = {0, 1, 0 ,-1};
+        for(int i = 0; i &lt; 4; i++)//遍历四个方向，对应步骤2
+        {
+            int x = u.first + dx[i];
+            int y = u.second + dy[i];
+
+            if(a[x][y] == '#') continue;//如果是'#',不做任何处理
+            if(a[x][y] == '.')//如果是 '.'，更新对应内容
+            {
+                dis[x][y] = dis[u.first][u.second] + 1;
+                a[x][y] = '#';
+                q.push({x, y});
+            }
+            if(a[x][y] == 'E')//如果是'E'，找到了，输出
+            {
+                cout &lt;&lt; dis[u.first][u.second] + 1 &lt;&lt; endl;
+                return;
+            }
+        }
+    }
+    cout &lt;&lt; "oop!" &lt;&lt; endl;//没有找到
+
+}
+
+int main()
+{
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        memset(a, '#', sizeof(a));//初始化地图，各个点都是墙。
+        memset(dis, 0, sizeof(dis));//初始化dis
+        int n,m;
+        PII start;
+        cin &gt;&gt; n &gt;&gt; m;
+        for(int i = 1; i &lt;= n; i++)//从第一行存储地图，因为四周都是墙，bfs时，可以不做越界判断
+        {
+            for(int j = 1; j &lt;= m; j++)//从第一；列存储地图，因为四周都是墙，bfs时，可以不做越界判断
+            {
+                cin &gt;&gt; a[i][j];
+                if(a[i][j] == 'S')//记录下起点位置。
+                    start.first = i, start.second = j, a[i][j] = '#';
+            }
+        }
+        bfs(start);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="3-2-地牢大师-三维"><a href="#3-2-地牢大师-三维" class="headerlink" title="3.2 地牢大师(三维)"></a>3.2 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1098/">地牢大师(三维)</a></h5><p>仿照刚才二维的题，给出具体代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N=110;</span><br><span class="line"></span><br><span class="line">struct Point</span><br><span class="line">{</span><br><span class="line">    int x,y,z;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">char m[N][N][N];//地图</span><br><span class="line">int dis[N][N][N];</span><br><span class="line">int l,r,c;</span><br><span class="line">int dx[6] = {-1, 0, 1, 0, 0, 0}, dy[6] = {0, 1, 0, -1, 0, 0}, dz[6] = {0, 0, 0, 0, 1, -1};</span><br><span class="line"></span><br><span class="line">int bfs(Point start)</span><br><span class="line">{</span><br><span class="line">    queue&lt;Point&gt; q;</span><br><span class="line">    </span><br><span class="line">    q.push(start);</span><br><span class="line">    </span><br><span class="line">    while(!q.empty())</span><br><span class="line">    {</span><br><span class="line">        Point t=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        </span><br><span class="line">        for(int i=0;i&lt;6;i++)</span><br><span class="line">        {</span><br><span class="line">            int x=t.x+dx[i],y=t.y+dy[i],z=t.z+dz[i];</span><br><span class="line">            if(m[x][y][z]=='#')continue;</span><br><span class="line">            if(m[x][y][z]=='.')</span><br><span class="line">            {</span><br><span class="line">                dis[x][y][z]=dis[t.x][t.y][t.z]+1;</span><br><span class="line">                m[x][y][z]='#';</span><br><span class="line">                q.push({x,y,z});</span><br><span class="line">            }</span><br><span class="line">            if(m[x][y][z]=='E')</span><br><span class="line">            {</span><br><span class="line">                return dis[t.x][t.y][t.z]+1;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    return -1;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">    while(scanf("%d%d%d",&amp;l,&amp;r,&amp;c),l||r||c)</span><br><span class="line">    {</span><br><span class="line">        memset(m,'#',sizeof(m));</span><br><span class="line">        memset(dis,0,sizeof(dis));</span><br><span class="line">        Point start,end;</span><br><span class="line">        for(int i=1;i&lt;=l;i++)</span><br><span class="line">        {</span><br><span class="line">            for(int j=1;j&lt;=r;j++)</span><br><span class="line">            {</span><br><span class="line">                for(int k=1;k&lt;=c;k++)</span><br><span class="line">                {</span><br><span class="line">                    cin&gt;&gt;m[i][j][k];</span><br><span class="line">                    if(m[i][j][k]=='S')start={i,j,k};</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        int distance=bfs(start);</span><br><span class="line">        if(distance==-1)puts("Trapped!");</span><br><span class="line">        else printf("Escaped in %d minute(s).\n",distance);</span><br><span class="line">    }</span><br><span class="line">    return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+const int N=110;
+
+struct Point
+{
+    int x,y,z;
+};
+
+char m[N][N][N];//地图
+int dis[N][N][N];
+int l,r,c;
+int dx[6] = {-1, 0, 1, 0, 0, 0}, dy[6] = {0, 1, 0, -1, 0, 0}, dz[6] = {0, 0, 0, 0, 1, -1};
+
+int bfs(Point start)
+{
+    queue&lt;Point&gt; q;
+    
+    q.push(start);
+    
+    while(!q.empty())
+    {
+        Point t=q.front();
+        q.pop();
+        
+        for(int i=0;i&lt;6;i++)
+        {
+            int x=t.x+dx[i],y=t.y+dy[i],z=t.z+dz[i];
+            if(m[x][y][z]=='#')continue;
+            if(m[x][y][z]=='.')
+            {
+                dis[x][y][z]=dis[t.x][t.y][t.z]+1;
+                m[x][y][z]='#';
+                q.push({x,y,z});
+            }
+            if(m[x][y][z]=='E')
+            {
+                return dis[t.x][t.y][t.z]+1;
+            }
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    while(scanf("%d%d%d",&amp;l,&amp;r,&amp;c),l||r||c)
+    {
+        memset(m,'#',sizeof(m));
+        memset(dis,0,sizeof(dis));
+        Point start,end;
+        for(int i=1;i&lt;=l;i++)
+        {
+            for(int j=1;j&lt;=r;j++)
+            {
+                for(int k=1;k&lt;=c;k++)
+                {
+                    cin&gt;&gt;m[i][j][k];
+                    if(m[i][j][k]=='S')start={i,j,k};
+                }
+            }
+        }
+        
+        int distance=bfs(start);
+        if(distance==-1)puts("Trapped!");
+        else printf("Escaped in %d minute(s).\n",distance);
+    }
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>其实可以看出很强的规律性，这两道题的做法几乎可以一模一样；等我再做几道题找找规律</strong></p>
 

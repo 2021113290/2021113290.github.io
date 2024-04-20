@@ -409,7 +409,24 @@
 </ol>
 <h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) {</span><br><span class="line">        <span class="type">int</span> l=<span class="number">0</span>,r=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> []res=<span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="type">int</span> k=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r){</span><br><span class="line">            <span class="keyword">if</span>(nums[l]*nums[l]&gt;nums[r]*nums[r]){</span><br><span class="line">                res[k]=nums[l]*nums[l];</span><br><span class="line">                l++;</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                res[k]=nums[r]*nums[r]; </span><br><span class="line">                r--;</span><br><span class="line">            }</span><br><span class="line">            k--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int l=0,r=nums.length-1;
+        int []res=new int[nums.length];
+        int k=nums.length-1;
+        while(l&lt;=r){
+            if(nums[l]*nums[l]&gt;nums[r]*nums[r]){
+                res[k]=nums[l]*nums[l];
+                l++;
+            }else{
+                res[k]=nums[r]*nums[r]; 
+                r--;
+            }
+            k--;
+        }
+        return res;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Problem-209-长度最小的子数组"><a href="#Problem-209-长度最小的子数组" class="headerlink" title="Problem: 209. 长度最小的子数组"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/">209. 长度最小的子数组</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
 <li><p><strong>问题分析</strong>：<br>首先，我们需要理解问题的本质：找到数组中和至少为<code>target</code>的最短连续子数组。这意味着我们需要对数组进行某种形式的遍历，并在遍历过程中跟踪子数组的和以及子数组的长度。</p>
@@ -427,7 +444,20 @@
 </ol>
 <h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> {</span><br><span class="line">            <span class="type">int</span> l=<span class="number">0</span>,sum=<span class="number">0</span>,res=Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> r=<span class="number">0</span>;r&lt;nums.length;r++){</span><br><span class="line">                sum+=nums[r];</span><br><span class="line">                <span class="keyword">while</span>(sum&gt;=target){</span><br><span class="line">                    res=Math.min(res,r-l+<span class="number">1</span>);</span><br><span class="line">                    sum-=nums[l];</span><br><span class="line">                    l++;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> res==Integer.MAX_VALUE?<span class="number">0</span>:res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+            int l=0,sum=0,res=Integer.MAX_VALUE;
+            for(int r=0;r&lt;nums.length;r++){
+                sum+=nums[r];
+                while(sum&gt;=target){
+                    res=Math.min(res,r-l+1);
+                    sum-=nums[l];
+                    l++;
+                }
+            }
+            return res==Integer.MAX_VALUE?0:res;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Problem-59-螺旋矩阵-II"><a href="#Problem-59-螺旋矩阵-II" class="headerlink" title="Problem: 59. 螺旋矩阵 II"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/description/">59. 螺旋矩阵 II</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>这个算法的思路是基于模拟螺旋矩阵填充的过程。将其分为以下几个步骤：</p>
 <ol>
 <li><p><strong>初始化</strong>：</p>
@@ -478,7 +508,34 @@
 </ol>
 <h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n^2)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) {</span><br><span class="line">        <span class="type">int</span> loop=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> [][]res=<span class="keyword">new</span> <span class="title class_">int</span>[n][n];</span><br><span class="line">        <span class="type">int</span> start=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> count=<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> i,j;</span><br><span class="line">        <span class="keyword">while</span>(loop++&lt;n/<span class="number">2</span>){</span><br><span class="line">            <span class="keyword">for</span>(j=start;j&lt;n-loop;j++){</span><br><span class="line">                res[start][j]=count++;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span>(i=start;i&lt;n-loop;i++){</span><br><span class="line">                res[i][j]=count++;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span>(;j&gt;=loop;j--){</span><br><span class="line">                res[i][j]=count++;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span>(;i&gt;=loop;i--){</span><br><span class="line">                res[i][j]=count++;</span><br><span class="line">            }</span><br><span class="line">            start++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">1</span>){</span><br><span class="line">                res[start][start]=count;</span><br><span class="line">            }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">class Solution {
+    public int[][] generateMatrix(int n) {
+        int loop=0;
+        int [][]res=new int[n][n];
+        int start=0;
+        int count=1;
+        int i,j;
+        while(loop++&lt;n/2){
+            for(j=start;j&lt;n-loop;j++){
+                res[start][j]=count++;
+            }
+            for(i=start;i&lt;n-loop;i++){
+                res[i][j]=count++;
+            }
+            for(;j&gt;=loop;j--){
+                res[i][j]=count++;
+            }
+            for(;i&gt;=loop;i--){
+                res[i][j]=count++;
+            }
+            start++;
+        }
+        if(n%2==1){
+                res[start][start]=count;
+            }
+        return res;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

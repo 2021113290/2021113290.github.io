@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    465
+                    464
                 </div>
                 
 
@@ -403,7 +403,11 @@
             <div id="articleContent">
                 <p>我们可以通过命令行来使用到操作系统提供的功能，那么输入一个命令行后发生了什么？下面举一个实际的<strong>例子</strong>来说明：</p>
 <p><strong>有关操作</strong>：<br>你编写了一个<code>output.c</code>文件，该程序内容如下：</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> * argv[])</span></span><br><span class="line">{</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ECHO:%s\n"</span>,argv[<span class="number">1</span>]);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ECHO:%s\n"</span><span class="token punctuation">,</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后，你在命令行输入<code>gcc -o output output.c</code></p>
 <blockquote>
 <p>这条命令的意思是：使用 GCC 编译器编译 output.c文件，并将编译后的可执行文件命名为 output</p>
@@ -412,7 +416,15 @@
 <p>那么输入一个命令行后发生了什么才得到我们想要的<strong>结果</strong>了呢？</p>
 <p><strong>首先</strong>，说明<strong>命令的含义</strong>：就是一段程序。<br>程序要编译，程序编译完后生成可执行文件，刚才我们已经说明。</p>
 <p><code>./ouput</code>运行可执行文件，那么<code>“hello”</code>究竟是怎么读到的呢？<br>这就是<code>shell</code>所做的工作，<code>shell</code>的本质也是一段程序，关键代码如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc,char * argv[])</span><br><span class="line">{</span><br><span class="line">    char cmd[20];</span><br><span class="line">    while(1){</span><br><span class="line">        scanf("%s",cmd);</span><br><span class="line">        if(!fork()){exec(cmd);}</span><br><span class="line">        else wait();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">int main(int argc,char * argv[])
+{
+    char cmd[20];
+    while(1){
+        scanf("%s",cmd);
+        if(!fork()){exec(cmd);}
+        else wait();
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>关键代码说明</strong><br><code>if (!fork())</code>：调用 <code>fork()</code> 函数创建一个子进程。<code>fork()</code> 返回一个正整数（父进程的PID）给父进程，返回0给子进程。因此，<code>!fork()</code> 的条件只在子进程中为真。</p>
 <p><code>exec(cmd)</code>：在子进程中，调用 <code>exec</code> 函数来执行用户输入的命令。</p>

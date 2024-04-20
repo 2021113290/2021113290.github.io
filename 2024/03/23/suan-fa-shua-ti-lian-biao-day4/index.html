@@ -437,7 +437,37 @@
 </ol>
 <h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode() {}</span><br><span class="line"> *     ListNode(int val) { this.val = val; }</span><br><span class="line"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span><br><span class="line"> * }</span><br><span class="line"> */</span><br><span class="line">class Solution {</span><br><span class="line">    public ListNode swapPairs(ListNode head) {</span><br><span class="line">        ListNode dummy=new ListNode(-1);</span><br><span class="line">        dummy.next=head;</span><br><span class="line">        ListNode cur=dummy;</span><br><span class="line">        ListNode first;</span><br><span class="line">        ListNode second;</span><br><span class="line">        ListNode tmp;</span><br><span class="line">        while(cur.next!=null&amp;&amp;cur.next.next!=null)</span><br><span class="line">        {</span><br><span class="line">            first=cur.next;</span><br><span class="line">            second=cur.next.next;</span><br><span class="line">            tmp=cur.next.next.next;</span><br><span class="line">            cur.next=second;</span><br><span class="line">            second.next=first;</span><br><span class="line">            first.next=tmp;</span><br><span class="line">            cur=first;</span><br><span class="line">        }</span><br><span class="line">        return dummy.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-none"><code class="language-none">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        ListNode dummy=new ListNode(-1);
+        dummy.next=head;
+        ListNode cur=dummy;
+        ListNode first;
+        ListNode second;
+        ListNode tmp;
+        while(cur.next!=null&amp;&amp;cur.next.next!=null)
+        {
+            first=cur.next;
+            second=cur.next.next;
+            tmp=cur.next.next.next;
+            cur.next=second;
+            second.next=first;
+            first.next=tmp;
+            cur=first;
+        }
+        return dummy.next;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Problem-19-删除链表的倒数第-N-个结点"><a href="#Problem-19-删除链表的倒数第-N-个结点" class="headerlink" title="Problem: 19. 删除链表的倒数第 N 个结点"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/">19. 删除链表的倒数第 N 个结点</a></h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>使用快慢指针来删除链表中倒数第n个节点。具体思路如下：</p>
 <ol>
 <li><p><strong>创建虚拟头节点</strong>：</p>
@@ -473,7 +503,32 @@
 </ol>
 <h3 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() {}</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> {</span><br><span class="line">       <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>);</span><br><span class="line">       dummy.next=head;</span><br><span class="line">       ListNode fast=dummy;</span><br><span class="line">       ListNode slow=dummy;</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)fast=fast.next;<span class="comment">//让快指针走n+1步，这样一会快慢指针一起移动时慢指针会走到删除结点的前一个</span></span><br><span class="line">       <span class="keyword">while</span>(fast!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">        fast=fast.next;</span><br><span class="line">        slow=slow.next;</span><br><span class="line">       }</span><br><span class="line">       slow.next=slow.next.next;</span><br><span class="line">       <span class="keyword">return</span> dummy.next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+       ListNode dummy =new ListNode(-1);
+       dummy.next=head;
+       ListNode fast=dummy;
+       ListNode slow=dummy;
+       for(int i=0;i&lt;=n;i++)fast=fast.next;//让快指针走n+1步，这样一会快慢指针一起移动时慢指针会走到删除结点的前一个
+       while(fast!=null)
+       {
+        fast=fast.next;
+        slow=slow.next;
+       }
+       slow.next=slow.next.next;
+       return dummy.next;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Problem-面试题-02-07-链表相交"><a href="#Problem-面试题-02-07-链表相交" class="headerlink" title="Problem: 面试题 02.07. 链表相交"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/description/">面试题 02.07. 链表相交</a></h2><h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>如果两个链表相交，那么从相交点开始，它们的后续节点都是相同的；如果两个链表不相交，则返回null。</p>
 <p>以下是该代码的思路：</p>
 <ol>
@@ -501,7 +556,59 @@
 </blockquote>
 <h3 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n + m)</p>
 <p>空间复杂度:<br>O(1)</p>
-<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) {</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> {</span><br><span class="line">       ListNode curA=headA;</span><br><span class="line">       ListNode curB=headB;</span><br><span class="line">       <span class="type">int</span> lenA=<span class="number">0</span>,lenB=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(curA!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">            lenA++;</span><br><span class="line">            curA=curA.next;</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">while</span>(curB!=<span class="literal">null</span>){</span><br><span class="line">        lenB++;</span><br><span class="line">        curB=curB.next;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">        curA=headA;</span><br><span class="line">        curB=headB;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(lenA&gt;lenB)</span><br><span class="line">       {</span><br><span class="line">        <span class="type">int</span> tmp=lenA;</span><br><span class="line">        lenA=lenB;</span><br><span class="line">        lenB=tmp;</span><br><span class="line">        ListNode tmpN=curA;</span><br><span class="line">        curA=curB;</span><br><span class="line">        curB=tmpN;</span><br><span class="line">       }</span><br><span class="line">       <span class="type">int</span> l=lenB-lenA;</span><br><span class="line">       <span class="keyword">while</span>(l-- &gt;<span class="number">0</span>)</span><br><span class="line">       {</span><br><span class="line">        curB=curB.next;</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">while</span>(curB!=<span class="literal">null</span>)</span><br><span class="line">       {</span><br><span class="line">         <span class="keyword">if</span>(curA==curB)<span class="keyword">return</span> curA;</span><br><span class="line">        curB=curB.next;</span><br><span class="line">        curA=curA.next;</span><br><span class="line">       </span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+       ListNode curA=headA;
+       ListNode curB=headB;
+       int lenA=0,lenB=0;
+       while(curA!=null)
+       {
+            lenA++;
+            curA=curA.next;
+       }
+       while(curB!=null){
+        lenB++;
+        curB=curB.next;
+       }
+
+        curA=headA;
+        curB=headB;
+
+       if(lenA&gt;lenB)
+       {
+        int tmp=lenA;
+        lenA=lenB;
+        lenB=tmp;
+        ListNode tmpN=curA;
+        curA=curB;
+        curB=tmpN;
+       }
+       int l=lenB-lenA;
+       while(l-- &gt;0)
+       {
+        curB=curB.next;
+       }
+       while(curB!=null)
+       {
+         if(curA==curB)return curA;
+        curB=curB.next;
+        curA=curA.next;
+       
+       }
+       return null;
+}
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Problem-142-环形链表-II"><a href="#Problem-142-环形链表-II" class="headerlink" title="Problem: 142. 环形链表 II"></a>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/description/">142. 环形链表 II</a></h2><h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>检测一个单链表中是否有环，并返回环的入口节点。如果链表没有环，则返回null。</p>
 <p>以下是该代码的思路：</p>
 <ol>
@@ -533,7 +640,39 @@
 <p>最后，如果快慢指针没有相遇，即链表没有环，则返回null。</p>
 <h3 id="复杂度-3"><a href="#复杂度-3" class="headerlink" title="复杂度"></a>复杂度</h3><p>时间复杂度:<br>O(n)，其中n是链表的长度。因为快指针最多遍历两遍链表（一次是找到相遇点，另一次是与慢指针一起找到环入口点），慢指针最多遍历一遍链表。</p>
 <p>空间复杂度:<br>O(1)，因为只使用了常数个指针变量</p>
-<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) {</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> {</span><br><span class="line">       ListNode fast=head;</span><br><span class="line">       ListNode slow=head;</span><br><span class="line">       <span class="keyword">while</span>(fast!=<span class="literal">null</span>&amp;&amp;fast.next!=<span class="literal">null</span>){</span><br><span class="line">        slow=slow.next;</span><br><span class="line">        fast=fast.next.next;</span><br><span class="line">        <span class="keyword">if</span>(fast==slow){</span><br><span class="line">            ListNode index1=slow;</span><br><span class="line">            ListNode index2=head;</span><br><span class="line">            <span class="keyword">while</span>(index1!=index2)</span><br><span class="line">            {</span><br><span class="line">                index1=index1.next;</span><br><span class="line">                index2=index2.next;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> index1;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+       ListNode fast=head;
+       ListNode slow=head;
+       while(fast!=null&amp;&amp;fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+        if(fast==slow){
+            ListNode index1=slow;
+            ListNode index2=head;
+            while(index1!=index2)
+            {
+                index1=index1.next;
+                index2=index2.next;
+            }
+            return index1;
+        }
+        
+       }
+       return null;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
